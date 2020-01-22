@@ -21,3 +21,9 @@ Route::post('makeTodo/confirm', 'MakeTodoController@confirm');
 
 Route::post('makeTodo/complete', 'MakeTodoController@complete');
 
+Route::post('updateTodo/input', 'UpdateTodoController@input');
+
+Route::post('updateTodo/confirm', 'UpdateTodoController@confirm');
+
+Route::post('updateTodo/complete', 'UpdateTodoController@complete');
+

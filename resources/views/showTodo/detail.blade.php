@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>ToDoリスト作成</title>
+        <title>個別ToDo詳細</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -79,9 +79,9 @@
                     </tr>
                     <tr>
                         <th>完了区分</th>
-                        @if ($todo->priority_cls == FALSE)
+                        @if ($todo->comp_cls == FALSE)
                             <td>未達成</td>
-                        @elseif ($todo->priority_cls == TRUE)
+                        @elseif ($todo->comp_cls == TRUE)
                             <td>完了</td>
                         @endif
                     </tr>
@@ -111,7 +111,7 @@
                     <input id="id" name="id" type="hidden" value={{$todo->id}}>
                     <input id="user_id" name="user_id" type="hidden" value={{$todo->user_id}}>
                     <input id="title" name="title" type="hidden" value={{$todo->title}}>
-                    <input id="time_limit" name="time_limit" type="hidden" value={{$todo->comp_cls}}>
+                    <input id="comp_cls" name="comp_cls" type="hidden" value={{$todo->comp_cls}}>
                     <input id="time_limit" name="time_limit" type="hidden" value={{$todo->time_limit}}>
                     <input id="not_chosen" name="priority_cls" type="hidden" value={{$todo->priority_cls}}>
                     <input id="description" name="description" type="hidden" value={{$todo->description}}>

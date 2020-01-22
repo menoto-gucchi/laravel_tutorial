@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>ToDo作成</title>
+        <title>ToDo編集</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -74,28 +74,57 @@
 
             <div class="content">
 
-                <form method="POST" action="/makeTodo/confirm">
+                <form method="POST" action="/updateTodo/confirm">
                     @csrf
                     <label id="title">タイトル</label><br>
-                    <input id="title" name="title" type="text" requred>
+                    <input id="title" name="title" type="text" value={{$req->title}} requred>
+                    <br>
+
+                    <label id="comp_cls">完了区分</label><br>
+                    <input id="not_yet" name="comp_cls" type="radio" value="0"
+                    @if ($req->comp_cls == FALSE)
+                        checked
+                    @endif
+                    >未達成
+                    <input id="comp" name="comp_cls" type="radio" value="1"
+                    @if ($req->comp_cls == TRUE)
+                        checked
+                    @endif
+                    >完了
                     <br>
 
                     <label id="time_limit">期限</label><br>
-                    <input id="time_limit" name="time_limit" type="date">
+                        <input id="time_limit" name="time_limit" type="date" value={{$req->time_limit}}>
                     <br>
 
                     <label id="priority_cls">優先度</label><br>
-                    <input id="not_chosen" name="priority_cls" type="radio" checked>未選択
-                    <input id="high" name="priority_cls" type="radio" value="0">低
-                    <input id="middle" name="priority_cls" type="radio" value="1">中
-                    <input id="low" name="priority_cls" type="radio" value="2">高
+                    <input id="not_chosen" name="priority_cls" type="radio"
+                    @if ($req->priority_cls == null)
+                        checked
+                    @endif
+                    >未選択
+                    <input id="high" name="priority_cls" type="radio" value="0"
+                    @if ($req->priority_cls == 0)
+                        checked
+                    @endif
+                    >低
+                    <input id="middle" name="priority_cls" type="radio" value="1"
+                    @if ($req->priority_cls == 1)
+                        checked
+                    @endif
+                    >中
+                    <input id="low" name="priority_cls" type="radio" value="2"
+                    @if ($req->priority_cls == 2)
+                        checked
+                    @endif
+                    >高
                     <br>
 
                     <label id="description">内容</label><br>
-                    <textarea id="description" name="description" type="text"></textarea>
+                    <textarea id="description" name="description" type="text">{{$req->description}}</textarea>
                     <br>
 
-                    <input id="user_id" name="user_id" type="hidden" value={{$req->user_id}}>
+                    <input id="id" name="id" type="hidden" value={{$req->id}}>
 
                     <input type="submit" value="確認">
 

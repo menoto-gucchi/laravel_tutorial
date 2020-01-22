@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>ToDoリスト一覧表示</title>
+        <title>ToDo編集確認</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -60,6 +60,13 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            #title{
+                width:250px;
+            }
+            #description{
+                width:250px;
+                height:250px;
+            }
         </style>
     </head>
     <body>
@@ -67,30 +74,28 @@
 
             <div class="content">
 
-                @if (count($todoList) == 0)
-                    <p>未作成</p>
-                @else
-                    <table class="table">
-                    <tr>
-                        <th>タイトル</th>
-                        <th>完了区分</th>
-                        <th>期限</th>
-                        <th>優先度</th>
-                        <th>詳細</th>
-                    </tr>
-                    @foreach ($todoList as $todo)
-                    <tr>
-                        <td>{{$todo->title}}</td>
+                <p>この内容で更新しますか？</p>
+                <br>
 
-                        @if ($todo->comp_cls == FALSE)
+                <table class="table">
+                <table class="table">
+                    <tr>
+                        <th>タイトル</th><td>{{$req->title}}</td>
+                    </tr>
+                    <tr>
+                        <th>完了区分</th>
+                        @if ($req->comp_cls == FALSE)
                             <td>未達成</td>
-                        @elseif ($todo->comp_cls == TRUE)
+                        @elseif ($req->comp_cls == TRUE)
                             <td>完了</td>
                         @endif
-                        
-                        <td>{{$todo->time_limit}}</td>
-
-                        @switch ($todo->priority_cls)
+                    </tr>
+                    <tr>
+                        <th>期限</th><td>{{$req->time_limit}}</td>
+                    </tr>
+                    <tr>
+                        <th>優先度</th>
+                        @switch ($req->priority_cls)
                             @case(0)
                                 <td>低</td>@break
                             @case(1)
@@ -100,24 +105,24 @@
                             @default
                                 <td>未設定</td>@break
                         @endswitch
-                        
-                        <td>
-                         <form method="POST" action="showTodo/detail">
-                            @csrf
-                            <input id="id" name="id" type="hidden" value={{$todo->id}}>
-                            <input id="user_id" name="user_id" type="hidden" value="1">
-                            <input type="submit" value="詳細">
-                        </form>
                     </tr>
-                    @endforeach
-                    </table>
-                @endif
+                    <tr>
+                        <th>内容</th><td>{{$req->description}}</td>
+                    </tr>
+                </table>
 
-                <form method="POST" action="/makeTodo/input">
+                <form method="POST" action="/updateTodo/complete">
                     @csrf
-                    <input id="user_id" name="user_id" type="hidden" value="1">
-                    <input type="submit" value="作成">
+                    <input id="id" name="id" type="hidden" value={{$req->id}}>
+                    <input id="title" name="title" type="hidden" value={{$req->title}}>
+                    <input id="comp_cls" name="comp_cls" type="hidden" value={{$req->comp_cls}}>
+                    <input id="time_limit" name="time_limit" type="hidden" value={{$req->time_limit}}>
+                    <input id="not_chosen" name="priority_cls" type="hidden" value={{$req->priority_cls}}>
+                    <input id="description" name="description" type="hidden" value={{$req->description}}>
+                    <input type="submit" value="更新">
                 </form>
+
+                <button type="button" onclick="history.back()">修正</button>
 
             </div>
         </div>
