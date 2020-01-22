@@ -101,7 +101,7 @@
                 </tr>
                 </table>
 
-                <form mathod="POST" action="/makeTodo/complete">
+                <form method="POST" action="/makeTodo/complete">
                     @csrf
                     <input id="title" name="title" type="hidden" value={{$req->title}}>
                     <input id="time_limit" name="time_limit" type="hidden" value={{$req->time_limit}}>

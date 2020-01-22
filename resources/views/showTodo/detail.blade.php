@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>ToDoリスト一覧表示</title>
+        <title>ToDoリスト作成</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -60,36 +60,36 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            #title{
+                width:250px;
+            }
+            #description{
+                width:250px;
+                height:250px;
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
 
             <div class="content">
-
-                @if (count($todoList) == 0)
-                    <p>未作成</p>
-                @else
-                    <table class="table">
+                <table class="table">
                     <tr>
-                        <th>タイトル</th>
-                        <th>完了区分</th>
-                        <th>期限</th>
-                        <th>優先度</th>
-                        <th>詳細</th>
+                        <th>タイトル</th><td>{{$todo->title}}</td>
                     </tr>
-                    @foreach ($todoList as $todo)
                     <tr>
-                        <td>{{$todo->title}}</td>
-
+                        <th>完了区分</th>
                         @if ($todo->priority_cls == FALSE)
                             <td>未達成</td>
                         @elseif ($todo->priority_cls == TRUE)
                             <td>完了</td>
                         @endif
-                        
-                        <td>{{$todo->time_limit}}</td>
-
+                    </tr>
+                    <tr>
+                        <th>期限</th><td>{{$todo->time_limit}}</td>
+                    </tr>
+                    <tr>
+                        <th>優先度</th>
                         @switch ($todo->priority_cls)
                             @case(0)
                                 <td>低</td>@break
@@ -100,24 +100,25 @@
                             @default
                                 <td>未設定</td>@break
                         @endswitch
-                        
-                        <td>
-                         <form method="POST" action="showTodo/detail">
-                            @csrf
-                            <input id="id" name="id" type="hidden" value={{$todo->id}}>
-                            <input id="user_id" name="user_id" type="hidden" value="1">
-                            <input type="submit" value="詳細">
-                        </form>
                     </tr>
-                    @endforeach
-                    </table>
-                @endif
+                    <tr>
+                        <th>内容</th><td>{{$todo->description}}</td>
+                    </tr>
+                </table>
 
-                <form method="POST" action="/makeTodo/input">
+                <form method="POST" action="/updateTodo/input">
                     @csrf
-                    <input id="user_id" name="user_id" type="hidden" value="1">
-                    <input type="submit" value="作成">
+                    <input id="id" name="id" type="hidden" value={{$todo->id}}>
+                    <input id="user_id" name="user_id" type="hidden" value={{$todo->user_id}}>
+                    <input id="title" name="title" type="hidden" value={{$todo->title}}>
+                    <input id="time_limit" name="time_limit" type="hidden" value={{$todo->comp_cls}}>
+                    <input id="time_limit" name="time_limit" type="hidden" value={{$todo->time_limit}}>
+                    <input id="not_chosen" name="priority_cls" type="hidden" value={{$todo->priority_cls}}>
+                    <input id="description" name="description" type="hidden" value={{$todo->description}}>
+                    <input type="submit" value="編集">
                 </form>
+
+                <button type="button" onclick="history.back()">一覧へ戻る</button>
 
             </div>
         </div>

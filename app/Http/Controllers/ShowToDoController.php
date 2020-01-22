@@ -12,4 +12,10 @@ class ShowTodoController extends Controller
 
         return view('showTodo.list',$data);
     }
+
+    public function detail(Request $req){
+        $data = ['todo' => Todo::find($req->id)];
+
+        return view('showTodo.detail',$data);
+    }
 }

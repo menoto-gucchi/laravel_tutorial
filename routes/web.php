@@ -13,9 +13,11 @@
 
 Route::get('/', 'ShowTodoController@list');
 
-Route::get('makeTodo/input', 'MakeTodoController@input');
+Route::post('showTodo/detail', 'ShowTodoController@detail');
 
-Route::get('makeTodo/confirm', 'MakeTodoController@confirm');
+Route::post('makeTodo/input', 'MakeTodoController@input');
 
-Route::get('makeTodo/complete', 'MakeTodoController@complete');
+Route::post('makeTodo/confirm', 'MakeTodoController@confirm');
+
+Route::post('makeTodo/complete', 'MakeTodoController@complete');
 

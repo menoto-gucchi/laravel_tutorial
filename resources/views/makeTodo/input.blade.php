@@ -74,7 +74,7 @@
 
             <div class="content">
 
-                <form mathod="POST" action="/makeTodo/confirm">
+                <form method="POST" action="/makeTodo/confirm">
                     @csrf
                     <label id="title">タイトル</label><br>
                     <input id="title" name="title" type="text" requred>
