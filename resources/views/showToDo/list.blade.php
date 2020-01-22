@@ -67,8 +67,14 @@
 
             <div class="content">
 
+                <form method="POST" action="/showTodo/search">
+                    @csrf
+                    <input id="user_id" name="user_id" type="hidden" value="1">
+                    <input type="submit" value="検索">
+                </form>
+
                 @if (count($todoList) == 0)
-                    <p>未作成</p>
+                    <p>ToDoがありません。</p>
                 @else
                     <table class="table">
                     <tr>
@@ -91,11 +97,11 @@
                         <td>{{$todo->time_limit}}</td>
 
                         @switch ($todo->priority_cls)
-                            @case(0)
-                                <td>低</td>@break
                             @case(1)
-                                <td>中</td>@break
+                                <td>低</td>@break
                             @case(2)
+                                <td>中</td>@break
+                            @case(3)
                                 <td>高</td>@break
                             @default
                                 <td>未設定</td>@break

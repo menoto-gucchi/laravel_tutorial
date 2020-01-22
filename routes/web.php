@@ -15,6 +15,8 @@ Route::get('/', 'ShowTodoController@list');
 
 Route::post('showTodo/detail', 'ShowTodoController@detail');
 
+Route::post('showTodo/search', 'ShowTodoController@search');
+
 Route::post('makeTodo/input', 'MakeTodoController@input');
 
 Route::post('makeTodo/confirm', 'MakeTodoController@confirm');

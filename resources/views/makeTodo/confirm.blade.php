@@ -88,11 +88,11 @@
                     <td>{{$req->title}}</td>
                     <td>{{$req->time_limit}}</td>
                     @switch ($req->priority_cls)
-                        @case(0)
-                            <td>低</td>@break
                         @case(1)
-                            <td>中</td>@break
+                            <td>低</td>@break
                         @case(2)
+                            <td>中</td>@break
+                        @case(3)
                             <td>高</td>@break
                         @default
                             <td>未設定</td>@break

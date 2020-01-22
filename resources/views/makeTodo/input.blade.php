@@ -85,10 +85,10 @@
                     <br>
 
                     <label id="priority_cls">優先度</label><br>
-                    <input id="not_chosen" name="priority_cls" type="radio" checked>未選択
-                    <input id="high" name="priority_cls" type="radio" value="0">低
-                    <input id="middle" name="priority_cls" type="radio" value="1">中
-                    <input id="low" name="priority_cls" type="radio" value="2">高
+                    <input id="not_chosen" name="priority_cls" type="radio" value="1" checked>未選択
+                    <input id="high" name="priority_cls" type="radio" value="1">低
+                    <input id="middle" name="priority_cls" type="radio" value="2">中
+                    <input id="low" name="priority_cls" type="radio" value="3">高
                     <br>
 
                     <label id="description">内容</label><br>
