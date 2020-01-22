@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>ToDoリスト一覧表示</title>
+        <title>ToDoリスト作成</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -60,6 +60,13 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            #title{
+                width:250px;
+            }
+            #description{
+                width:250px;
+                height:250px;
+            }
         </style>
     </head>
     <body>
@@ -67,48 +74,34 @@
 
             <div class="content">
 
-                @if (count($todoList) == 0)
-                    <p>未作成</p>
-                @else
-                    <table class="table">
-                    <tr>
-                        <th>タイトル</th>
-                        <th>完了区分</th>
-                        <th>期限</th>
-                        <th>優先度</th>
-                    </tr>
-                    @foreach ($todoList as $todo)
-                    <tr>
-                        <td>{{$todo->title}}</td>
-
-                        @if ($todo->priority_cls == FALSE)
-                            <td>未達成</td>
-                        @elseif ($todo->priority_cls == TRUE)
-                            <td>完了</td>
-                        @endif
-                        
-                        <td>{{$todo->time_limit}}</td>
-
-                        @switch ($todo->priority_cls)
-                            @case(0)
-                                <td>低</td>@break
-                            @case(1)
-                                <td>中</td>@break
-                            @case(2)
-                                <td>高</td>@break
-                            @default
-                                <td>未設定</td>@break
-                        @endswitch
-                    </tr>
-                    @endforeach
-                    </table>
-                @endif
-
-                <form mathod="POST" action="/makeTodo/input">
+                <form mathod="POST" action="/makeTodo/confirm">
                     @csrf
-                    <input id="user_id" name="user_id" type="hidden" value="1">
-                    <input type="submit" value="作成">
+                    <label id="title">タイトル</label><br>
+                    <input id="title" name="title" type="text" requred>
+                    <br>
+
+                    <label id="time_limit">期限</label><br>
+                    <input id="time_limit" name="time_limit" type="date">
+                    <br>
+
+                    <label id="priority_cls">優先度</label><br>
+                    <input id="not_chosen" name="priority_cls" type="radio" checked>未選択
+                    <input id="high" name="priority_cls" type="radio" value="0">低
+                    <input id="middle" name="priority_cls" type="radio" value="1">中
+                    <input id="low" name="priority_cls" type="radio" value="2">高
+                    <br>
+
+                    <label id="description">内容</label><br>
+                    <textarea id="description" name="description" type="text"></textarea>
+                    <br>
+
+                    <input id="user_id" name="user_id" type="hidden" value={{$req->user_id}}>
+
+                    <input type="submit" value="確認">
+
                 </form>
+
+                <button type="button" onclick="history.back()">戻る</button>
 
             </div>
         </div>
