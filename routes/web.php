@@ -27,3 +27,7 @@ Route::post('updateTodo/confirm', 'UpdateTodoController@confirm');
 
 Route::post('updateTodo/complete', 'UpdateTodoController@complete');
 
+Route::post('deleteTodo/confirm', 'DeleteTodoController@confirm');
+
+Route::post('deleteTodo/complete', 'DeleteTodoController@complete');
+

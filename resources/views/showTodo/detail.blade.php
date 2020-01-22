@@ -118,6 +118,12 @@
                     <input type="submit" value="編集">
                 </form>
 
+                <form method="POST" action="/deleteTodo/confirm">
+                    @csrf
+                    <input id="id" name="id" type="hidden" value={{$todo->id}}>
+                    <input type="submit" value="削除">
+                </form>
+
                 <button type="button" onclick="history.back()">一覧へ戻る</button>
 
             </div>
