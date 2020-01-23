@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Todo;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -21,8 +23,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $req)
+    public function index()
     {
-        return view('home');
+        $data = [
+            'todo' => Todo::where('user_id',Auth::id())
+            ->orderBy('created_at','desc')
+            ->limit(1)
+            ->get()
+        ];
+
+        return view('home',$data);
     }
 }
