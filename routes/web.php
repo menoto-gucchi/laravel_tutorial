@@ -21,7 +21,7 @@ Route::post('showTodo/search', 'ShowTodoController@search');
 
 Route::post('makeTodo/input', 'MakeTodoController@input');
 
-Route::post('makeTodos/confirm', 'MakeTodoController@confirm');
+Route::post('makeTodo/confirm', 'MakeTodoController@confirm');
 
 Route::post('makeTodo/complete', 'MakeTodoController@complete');
 
