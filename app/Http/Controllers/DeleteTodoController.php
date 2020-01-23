@@ -7,6 +7,11 @@ use App\Todo;
 
 class DeleteTodoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function confirm(Request $req)
     {
         return view('deleteTodo.confirm', ['req' => $req]);

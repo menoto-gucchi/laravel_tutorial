@@ -109,7 +109,6 @@
                 <form method="POST" action="/updateTodo/input">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$todo->id}}>
-                    <input id="user_id" name="user_id" type="hidden" value={{$todo->user_id}}>
                     <input id="title" name="title" type="hidden" value={{$todo->title}}>
                     <input id="comp_cls" name="comp_cls" type="hidden" value={{$todo->comp_cls}}>
                     <input id="time_limit" name="time_limit" type="hidden" value={{$todo->time_limit}}>

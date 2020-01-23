@@ -7,6 +7,11 @@ use App\Todo;
 
 class UpdateTodoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function input(Request $req)
     {
         return view('updateTodo.input', ['req' => $req]);

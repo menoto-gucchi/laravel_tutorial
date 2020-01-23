@@ -107,7 +107,6 @@
                     <input id="time_limit" name="time_limit" type="hidden" value={{$req->time_limit}}>
                     <input id="not_chosen" name="priority_cls" type="hidden" value={{$req->priority_cls}}>
                     <input id="description" name="description" type="hidden" value={{$req->description}}>
-                    <input id="user_id" name="user_id" type="hidden" value={{$req->user_id}}>
                     <input type="submit" value="作成">
                 </form>
 

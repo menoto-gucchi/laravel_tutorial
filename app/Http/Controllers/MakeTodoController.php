@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Todo;
+use Auth;
 
 class MakeTodoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function input(Request $req)
     {
         return view('makeTodo.input', ['req' => $req]);
@@ -22,7 +28,7 @@ class MakeTodoController extends Controller
         //モデルオブジェクトをインスタント化
         $todos = new Todo();
 
-        $todos -> user_id = $req -> user_id;
+        $todos -> user_id = Auth::id();
         $todos -> title = $req -> title;
         $todos -> comp_cls = '0';
         $todos -> time_limit = $req -> time_limit;

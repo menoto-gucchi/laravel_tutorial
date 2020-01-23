@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Todo;
+use Auth;
 
 class ShowTodoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function list(Request $req){
 
         $data = new Todo();
+
+        $data = $data -> where('user_id',Auth::id());
 
         if (!empty($req -> str)){
             $data = $data -> where('title','LIKE','%'.$req -> str.'%')

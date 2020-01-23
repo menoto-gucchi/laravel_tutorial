@@ -65,11 +65,24 @@
     <body>
         <div class="flex-center position-ref full-height">
 
+            @if (Route::has('login'))
+                    <div class="top-right links">
+                        @auth
+                            <a href="{{ url('/home') }}">Home</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}">Register</a>
+                            @endif
+                        @endauth
+                    </div>
+            @endif
+
             <div class="content">
 
                 <form method="POST" action="/showTodo/search">
                     @csrf
-                    <input id="user_id" name="user_id" type="hidden" value="1">
                     <input type="submit" value="検索">
                 </form>
 
@@ -111,7 +124,6 @@
                          <form method="POST" action="showTodo/detail">
                             @csrf
                             <input id="id" name="id" type="hidden" value={{$todo->id}}>
-                            <input id="user_id" name="user_id" type="hidden" value="1">
                             <input type="submit" value="詳細">
                         </form>
                     </tr>
@@ -121,7 +133,6 @@
 
                 <form method="POST" action="/makeTodo/input">
                     @csrf
-                    <input id="user_id" name="user_id" type="hidden" value="1">
                     <input type="submit" value="作成">
                 </form>
 

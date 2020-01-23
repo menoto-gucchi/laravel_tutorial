@@ -95,8 +95,6 @@
                     <textarea id="description" name="description" type="text"></textarea>
                     <br>
 
-                    <input id="user_id" name="user_id" type="hidden" value={{$req->user_id}}>
-
                     <input type="submit" value="確認">
 
                 </form>

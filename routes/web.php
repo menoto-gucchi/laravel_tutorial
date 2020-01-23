@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'ShowTodoController@list');
+Route::get('/', function(){return view('welcome');});
+
+Route::post('showTodo/list', 'ShowTodoController@list');
 
 Route::post('showTodo/detail', 'ShowTodoController@detail');
 
@@ -19,7 +21,7 @@ Route::post('showTodo/search', 'ShowTodoController@search');
 
 Route::post('makeTodo/input', 'MakeTodoController@input');
 
-Route::post('makeTodo/confirm', 'MakeTodoController@confirm');
+Route::post('makeTodos/confirm', 'MakeTodoController@confirm');
 
 Route::post('makeTodo/complete', 'MakeTodoController@complete');
 
@@ -32,4 +34,9 @@ Route::post('updateTodo/complete', 'UpdateTodoController@complete');
 Route::post('deleteTodo/confirm', 'DeleteTodoController@confirm');
 
 Route::post('deleteTodo/complete', 'DeleteTodoController@complete');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 

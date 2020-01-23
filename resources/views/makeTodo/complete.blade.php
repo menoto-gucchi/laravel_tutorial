@@ -76,7 +76,7 @@
 
                 <p>作成が完了しました。</p>
 
-                <form method="GET" action="/">
+                <form method="GET" action="/showTodo/list">
                     @csrf
                     <input type="submit" value="一覧画面へ戻る">
                 </form>
