@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function(){return view('welcome');});
+// Route::get('/', function(){return view('welcome');});
 
 Route::post('showTodo/list', 'ShowTodoController@list');
 
@@ -37,6 +37,6 @@ Route::post('deleteTodo/complete', 'DeleteTodoController@complete');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 

@@ -19,6 +19,7 @@
                 <button class="btn btn-secondary btn-block" type="button" onclick="history.back()">詳細へ戻る</button>
             </div>
         </div>
+        @include('common.toListButtonRow')
     </div>
 </div>
 @endsection

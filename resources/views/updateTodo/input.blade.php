@@ -96,6 +96,7 @@
                 </div>
             </div>
         </form>
+        @include('common.toListButtonRow')
     </div>
 </div>
 @endsection

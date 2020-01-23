@@ -54,7 +54,7 @@
                     <input class="btn btn-primary btn-block" type="submit" value="確認"> 
                 </div>
                 <div class="col-3">
-                    <button class="btn btn-secondary btn-block" type="button" onclick="history.back()">戻る</button>
+                    <button class="btn btn-outline-secondary btn-block" type="button" onclick="history.back()">一覧へ戻る</button>
                 </div>
             </div>
         </form>
