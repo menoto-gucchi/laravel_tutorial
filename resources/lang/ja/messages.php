@@ -47,7 +47,7 @@ return [
     'back_to_list' => '一覧画面へ戻る',
     'to_list' => 'Todo一覧へ',
 
-    'title_error_msg' => '入力されていない、もしくは３２文字を超えています。',
+    'title_error_msg' => '入力されていない、もしくは１４０文字を超えています。',
     'date_err_msg' => '開始日以前の日付を終了日に指定しています。',
     'make_confirm_msg' => 'この内容で作成しますか？',
     'make_complete_msg' => '作成が完了しました。',

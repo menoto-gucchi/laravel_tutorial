@@ -20,7 +20,7 @@ class UpdateTodoController extends Controller
     public function confirm(Request $req)
     {
         $validatedData = $req -> validate([
-            'title' => 'required|max:32',
+            'title' => 'required|max:140',
         ]);
 
         return view('updateTodo.confirm', ['req' => $req]);
