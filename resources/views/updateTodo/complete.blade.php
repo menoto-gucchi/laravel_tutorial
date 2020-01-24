@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center  complete-text-row">
             <div class="col-3 text-center">
-                更新が完了しました。
+                {{__('messages.update_complete_msg')}}
             </div>
         </div> 
         <div class="row justify-content-center btn-row">

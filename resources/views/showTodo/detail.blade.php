@@ -6,34 +6,34 @@
             <div class="col">
                 <table class="table">
                     <tr>
-                        <th>タイトル</th><td>{{$todo->title}}</td>
+                        <th>{{__('messages.title')}}</th><td>{{$todo->title}}</td>
                     </tr>
                     <tr>
-                        <th>完了区分</th>
+                        <th>{{__('messages.comp_cls')}}</th>
                         @if ($todo->comp_cls == FALSE)
-                            <td>未達成</td>
+                            <td>{{__('messages.not_yet')}}</td>
                         @elseif ($todo->comp_cls == TRUE)
-                            <td>完了</td>
+                            <td>{{__('messages.comp')}}</td>
                         @endif
                     </tr>
                     <tr>
-                        <th>期限</th><td>{{$todo->time_limit}}</td>
+                        <th>{{__('messages.time_limit')}}</th><td>{{$todo->time_limit}}</td>
                     </tr>
                     <tr>
-                        <th>優先度</th>
+                        <th>{{__('messages.priority_cls')}}</th>
                         @switch ($todo->priority_cls)
                             @case(1)
-                                <td>低</td>@break
+                                <td>{{__('messages.hign')}}</td>@break
                             @case(2)
-                                <td>中</td>@break
+                                <td>{{__('messages.middle')}}</td>@break
                             @case(3)
-                                <td>高</td>@break
+                                <td>{{__('messages.low')}}</td>@break
                             @default
-                                <td>-</td>@break
+                                <td>{{__('messages.title')}}</td>@break
                         @endswitch
                     </tr>
                     <tr>
-                        <th>内容</th><td>{{$todo->description}}</td>
+                        <th>{{__('messages.description')}}</th><td>{{$todo->description}}</td>
                     </tr>
                 </table>
             </div>
@@ -48,14 +48,14 @@
                     <input id="time_limit" name="time_limit" type="hidden" value={{$todo->time_limit}}>
                     <input id="not_chosen" name="priority_cls" type="hidden" value={{$todo->priority_cls}}>
                     <input id="description" name="description" type="hidden" value={{$todo->description}}>
-                    <input class="btn btn-primary btn-block" type="submit" value="編集">
+                    <input class="btn btn-primary btn-block" type="submit" value={{__('messages.edit')}}>
                 </form>
             </div>
             <div class="col-3">
                 <form method="get" action="/deleteTodo/confirm">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$todo->id}}>
-                    <input class="btn btn-danger btn-block" type="submit" value="削除">
+                    <input class="btn btn-danger btn-block" type="submit" value={{__('messages.delete')}}>
                 </form>
             </div>
         </div>

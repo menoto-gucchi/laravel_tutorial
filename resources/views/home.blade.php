@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">ダッシュボード</div>
+                <div class="card-header">{{__('messages.dashboard')}}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    ログイン中です。
+                    {{__('messages.logged_in')}}
                 </div>
             </div>
         </div>
@@ -22,42 +22,42 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">最新Todo</div>
+                <div class="card-header">{{__('messages.newest_todo')}}</div>
 
                 <div class="card-body">
                     @if (count($todo) == 0)
-                        <p>ToDoがありません。</p>
+                        <p>{{__('messages.not_found_todo')}}</p>
                     @else
                         <table class="table">
                             <tr>
-                                <th>タイトル</th><td>{{$todo[0]->title}}</td>
+                                <th>{{__('messages.title')}}</th><td>{{$todo[0]->title}}</td>
                             </tr>
                             <tr>
-                                <th>完了区分</th>
+                                <th>{{__('messages.comp_cls')}}</th>
                                 @if ($todo[0]->comp_cls == FALSE)
-                                    <td>未達成</td>
+                                    <td>{{__('messages.not_yet')}}</td>
                                 @elseif ($todo[0]->comp_cls == TRUE)
-                                    <td>完了</td>
+                                    <td>{{__('messages.comp')}}</td>
                                 @endif
                             </tr>
                             <tr>
-                                <th>期限</th><td>{{$todo[0]->time_limit}}</td>
+                                <th>{{__('messages.time_limit')}}</th><td>{{$todo[0]->time_limit}}</td>
                             </tr>
                             <tr>
-                                <th>優先度</th>
+                                <th>{{__('messages.priority_cls')}}</th>
                                 @switch ($todo[0]->priority_cls)
                                     @case(1)
-                                        <td>低</td>@break
+                                        <td>{{__('messages.hign')}}</td>@break
                                     @case(2)
-                                        <td>中</td>@break
+                                        <td>{{__('messages.middle')}}</td>@break
                                     @case(3)
-                                        <td>高</td>@break
+                                        <td>{{__('messages.low')}}</td>@break
                                     @default
-                                        <td>-</td>@break
+                                        <td>{{__('messages.not_chosen')}}</td>@break
                                 @endswitch
                             </tr>
                             <tr>
-                                <th>内容</th><td>{{$todo[0]->description}}</td>
+                                <th>{{__('messages.description')}}</th><td>{{$todo[0]->description}}</td>
                             </tr>
                         </table>
                     @endif
@@ -69,7 +69,7 @@
     <div class="row justify-content-center btn-row">
         <form method="get" action="/showTodo/list">
             @csrf
-            <input class="btn btn-primary" type="submit" value="Todo一覧へ">
+            <input class="btn btn-primary" type="submit" value={{__('messages.to_list')}}>
         </form>
     </div>
 </div>

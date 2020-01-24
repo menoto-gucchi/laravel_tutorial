@@ -4,41 +4,41 @@
     <div class="container">
         <div class="row justify-content-center confirm-text-row">
             <div class="col text-center">
-                この内容で更新しますか？
+                {{__('messages.update_confirm_msg')}}
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <table class="table">
                     <tr>
-                        <th>タイトル</th><td>{{$req->title}}</td>
+                        <th>{{__('messages.title')}}</th><td>{{$req->title}}</td>
                     </tr>
                     <tr>
-                        <th>完了区分</th>
+                        <th>{{__('messages.comp_cls')}}</th>
                         @if ($req->comp_cls == FALSE)
-                            <td>未達成</td>
+                            <td>{{__('messages.not_yet')}}</td>
                         @elseif ($req->comp_cls == TRUE)
-                            <td>完了</td>
+                            <td>{{__('messages.comp')}}</td>
                         @endif
                     </tr>
                     <tr>
-                        <th>期限</th><td>{{$req->time_limit}}</td>
+                        <th>{{__('messages.time_limit')}}</th><td>{{$req->time_limit}}</td>
                     </tr>
                     <tr>
-                        <th>優先度</th>
+                        <th>{{__('messages.priority_cls')}}</th>
                         @switch ($req->priority_cls)
                             @case(1)
-                                <td>低</td>@break
+                                <td>{{__('messages.hign')}}</td>@break
                             @case(2)
-                                <td>中</td>@break
+                                <td>{{__('messages.middle')}}</td>@break
                             @case(3)
-                                <td>高</td>@break
+                                <td>{{__('messages.low')}}</td>@break
                             @default
-                                <td>-</td>@break
+                                <td>{{__('messages.not_chosen')}}</td>@break
                         @endswitch
                     </tr>
                     <tr>
-                        <th>内容</th><td>{{$req->description}}</td>
+                        <th>{{__('messages.description')}}</th><td>{{$req->description}}</td>
                     </tr>
                 </table>
             </div>
@@ -53,11 +53,11 @@
                     <input id="time_limit" name="time_limit" type="hidden" value={{$req->time_limit}}>
                     <input id="priority_cls" name="priority_cls" type="hidden" value={{$req->priority_cls}}>
                     <input id="description" name="description" type="hidden" value={{$req->description}}>
-                    <input class="btn btn-primary btn-block" type="submit" value="更新">
+                    <input class="btn btn-primary btn-block" type="submit" value={{__('messages.update')}}>
                 </form>
             </div>
             <div class="col-3">
-                <button class="btn btn-secondary btn-block" type="button" onclick="history.back()">修正</button>
+                <button class="btn btn-secondary btn-block" type="button" onclick="history.back()">{{__('messages.revise')}}</button>
             </div>
         </div>
         <div class="row justify-content-center btn-row">

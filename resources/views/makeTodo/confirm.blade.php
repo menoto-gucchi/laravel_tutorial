@@ -4,33 +4,33 @@
     <div class="container">
         <div class="row justify-content-center confirm-text-row">
             <div class="col text-center">
-                この内容で作成しますか？
+                {{__('messages.make_confirm_msg')}}
             </div>
         </div>  
         <div class="row">
             <div class="col">
                 <table class="table">
                     <tr>
-                        <th>タイトル</th><td>{{$req->title}}</td>
+                        <th>{{__('messages.title')}}</th><td>{{$req->title}}</td>
                     </tr>
                     <tr>
-                        <th>期限</th><td>{{$req->time_limit}}</td>
+                        <th>{{__('messages.time_limit')}}</th><td>{{$req->time_limit}}</td>
                     </tr>
                     <tr>
-                        <th>優先度</th>
+                        <th>{{__('messages.priority_cls')}}</th>
                         @switch ($req->priority_cls)
                             @case(1)
-                                <td>低</td>@break
+                                <td>{{__('messages.hign')}}</td>@break
                             @case(2)
-                                <td>中</td>@break
+                                <td>{{__('messages.middle')}}</td>@break
                             @case(3)
-                                <td>高</td>@break
+                                <td>{{__('messages.low')}}</td>@break
                             @default
-                                <td>-</td>@break
+                                <td>{{__('messages.not_chosen')}}</td>@break
                         @endswitch
                     </tr>
                     <tr>
-                        <th>内容</th><td>{{$req->description}}</td>
+                        <th>{{__('messages.description')}}</th><td>{{$req->description}}</td>
                     </tr>
                 </table>
             </div>
@@ -43,11 +43,11 @@
                     <input id="time_limit" name="time_limit" type="hidden" value={{$req->time_limit}}>
                     <input id="priority_cls" name="priority_cls" type="hidden" value={{$req->priority_cls}}>
                     <input id="description" name="description" type="hidden" value={{$req->description}}>
-                    <input class="btn btn-primary btn-block" type="submit" value="作成">
+                    <input class="btn btn-primary btn-block" type="submit" value={{__('messages.make')}}>
                 </form>
             </div>
             <div class="col-3">
-                <button class="btn btn-secondary btn-block" type="button" onclick="history.back()">修正</button>
+                <button class="btn btn-secondary btn-block" type="button" onclick="history.back()">{{__('messages.revise')}}</button>
             </div>
         </div>
         <div class="row justify-content-center btn-row">

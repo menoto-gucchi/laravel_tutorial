@@ -8,17 +8,17 @@
                 <div class="col">
                     <table class="table">
                         <tr>
-                            <th>タイトル</th>
+                            <th>{{__('messages.title')}}</th>
                             <td>
                                 <input class="form-control @error('title') is-invalid @enderror" id="title" name="title" type="text" value="{{$req->title}}" requred>
                                 </input>
                                 @error('title')
-                                    <div class="alert alert-danger">入力されていない、もしくは３２文字を超えています。</div>
+                                    <div class="alert alert-danger">{{__('messages.title_error_msg')}}</div>
                                 @enderror
                             </td>
                         </tr>
                         <tr>
-                            <th>完了区分</th>
+                            <th>{{__('messages.comp_cls')}}</th>
                             <td>
                                 <div class="form-check">
                                     <input class="form-check-input" id="not_yet" name="comp_cls" type="radio" value="0"
@@ -26,7 +26,7 @@
                                         checked
                                     @endif
                                     >
-                                    <label class="form-check-label" for="not_yet">未達成</label>
+                                    <label class="form-check-label" for="not_yet">{{__('messages.not_yet')}}</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" id="comp" name="comp_cls" type="radio" value="1"
@@ -34,18 +34,18 @@
                                         checked
                                     @endif
                                     >
-                                    <label class="form-check-label" for="comp">完了</label>
+                                    <label class="form-check-label" for="comp">{{__('messages.comp')}}</label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <th>期限</th>
+                            <th>{{__('messages.time_limit')}}</th>
                             <td>
                                 <input class="form-control" id="time_limit" name="time_limit" type="date" value={{$req->time_limit}}>
                             </td>
                         </tr>
                         <tr>
-                            <th>優先度</th>
+                            <th>{{__('messages.priority_cls')}}</th>
                             <td>
                                 <div class="form-check">
                                     <input class="form-check-input" id="not_chosen" name="priority_cls" type="radio" value="0"
@@ -53,7 +53,7 @@
                                         checked
                                     @endif
                                     >
-                                    <label class="form-check-label" for="not_chosen">未選択</label>
+                                    <label class="form-check-label" for="not_chosen">{{__('messages.not_chosen')}}</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" id="hign" name="priority_cls" type="radio" value="1"
@@ -61,7 +61,7 @@
                                         checked
                                     @endif
                                     >
-                                    <label class="form-check-label" for="hign">高</label>
+                                    <label class="form-check-label" for="hign">{{__('messages.hign')}}</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" id="middle" name="priority_cls" type="radio" value="2"
@@ -69,7 +69,7 @@
                                         checked
                                     @endif
                                     >
-                                    <label class="form-check-label" for="notmiddle_chosen">中</label>
+                                    <label class="form-check-label" for="notmiddle_chosen">{{__('messages.middle')}}</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" id="low" name="priority_cls" type="radio" value="3"
@@ -77,12 +77,12 @@
                                         checked
                                     @endif
                                     >
-                                    <label class="form-check-label" for="low">低</label>
+                                    <label class="form-check-label" for="low">{{__('messages.low')}}</label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <th>内容</th>
+                            <th>{{__('messages.description')}}</th>
                             <td>
                                 <textarea class="form-control" id="description" name="description" type="text">{{$req->description}}</textarea>
                             </td>
@@ -94,13 +94,13 @@
         </form>
         <div class="row justify-content-center btn-row">
             <div class="col-3">
-                <button class="btn btn-primary btn-block" type="submit" form="update-confirm-form">確認</button>
+                <button class="btn btn-primary btn-block" type="submit" form="update-confirm-form">{{__('messages.confirm')}}</button>
             </div>
             <div class="col-3">
                 <form method="get" action="/showTodo/detail">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$req->id}}>
-                    <input class="btn btn-secondary btn-block" type="submit" value="詳細へ戻る">
+                    <input class="btn btn-secondary btn-block" type="submit" value={{__('messages.back_to_detail')}}>
                 </form>
             </div>
         </div>

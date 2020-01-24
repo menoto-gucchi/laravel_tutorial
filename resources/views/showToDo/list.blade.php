@@ -6,36 +6,36 @@
             <div class="col-3">
                 <form method="get" action="/makeTodo/input">
                     @csrf
-                    <input class="btn btn-primary btn-block" type="submit" value="作成">
+                    <input class="btn btn-primary btn-block" type="submit" value={{__('messages.make')}}>
                 </form>
             </div>
             <div class="col-3">
                 <form method="get" action="/showTodo/search">
                     @csrf
-                    <input class="btn btn-info btn-block" type="submit" value="検索">
+                    <input class="btn btn-info btn-block" type="submit" value={{__('messages.search')}}>
                 </form>
             </div>
         </div>
         <div class="row">
             <div class="col">
             @if (count($todoList) == 0)
-                <p>ToDoがありません。</p>
+                <p>{{__('messages.not_found_todo')}}</p>
             @else
                 <table class="table">
                 <tr>
-                    <th>タイトル</th>
-                    <th>完了区分</th>
-                    <th>期限</th>
-                    <th>詳細</th>
+                    <th>{{__('messages.title')}}</th>
+                    <th>{{__('messages.comp_cls')}}</th>
+                    <th>{{__('messages.time_limit')}}</th>
+                    <th>{{__('messages.detail')}}</th>
                 </tr>
                 @foreach ($todoList as $todo)
                 <tr>
                     <td>{{$todo->title}}</td>
 
                     @if ($todo->comp_cls == FALSE)
-                        <td>未達成</td>
+                        <td>{{__('messages.not_yet')}}</td>
                     @elseif ($todo->comp_cls == TRUE)
-                        <td>完了</td>
+                        <td>{{__('messages.comp')}}</td>
                     @endif
                     
                     <td>{{$todo->time_limit}}</td>
@@ -44,7 +44,7 @@
                         <form method="get" action="/showTodo/detail">
                             @csrf
                             <input id="id" name="id" type="hidden" value={{$todo->id}}>
-                            <input class="btn btn-outline-dark btn-detail" type="submit" value="詳細">
+                            <input class="btn btn-outline-dark btn-detail" type="submit" value={{__('messages.detail')}}>
                         </form>
                     </td>
                 </tr>

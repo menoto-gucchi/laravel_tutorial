@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center confirm-text-row">
             <div class="col text-center">
-                本当に削除しますか？
+                {{__('messages.delete_confirm_msg')}}
             </div>
         </div>
         <div class="row justify-content-center btn-row">
@@ -12,14 +12,14 @@
                 <form method="get" action="/deleteTodo/complete">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$req->id}}>
-                    <input class="btn btn-danger btn-block" type="submit" value="削除">
+                    <input class="btn btn-danger btn-block" type="submit" value={{__('messages.delete')}}>
                 </form>
             </div>
             <div class="col-3">
                 <form method="get" action="/showTodo/detail">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$req->id}}>
-                    <input class="btn btn-secondary btn-block" type="submit" value="詳細へ戻る">
+                    <input class="btn btn-secondary btn-block" type="submit" value={{__('messages.back_to_detail')}}>
                 </form>
             </div>
         </div>
