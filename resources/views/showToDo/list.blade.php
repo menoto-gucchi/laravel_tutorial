@@ -2,15 +2,15 @@
 @section('content')
 <div class="flex-center position-ref full-height">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center btn-row">
             <div class="col-3">
-                <form method="POST" action="/makeTodo/input">
+                <form method="get" action="/makeTodo/input">
                     @csrf
                     <input class="btn btn-primary btn-block" type="submit" value="作成">
                 </form>
             </div>
             <div class="col-3">
-                <form method="POST" action="/showTodo/search">
+                <form method="get" action="/showTodo/search">
                     @csrf
                     <input class="btn btn-info btn-block" type="submit" value="検索">
                 </form>
@@ -41,11 +41,12 @@
                     <td>{{$todo->time_limit}}</td>
                     
                     <td>
-                        <form method="POST" action="/showTodo/detail">
-                        @csrf
-                        <input id="id" name="id" type="hidden" value={{$todo->id}}>
-                        <input class="btn btn-outline-dark" type="submit" value="詳細">
-                    </form>
+                        <form method="get" action="/showTodo/detail">
+                            @csrf
+                            <input id="id" name="id" type="hidden" value={{$todo->id}}>
+                            <input class="btn btn-outline-dark btn-detail" type="submit" value="詳細">
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
                 </table>

@@ -66,8 +66,8 @@
         </div>
 
     </div>
-    <div class="row justify-content-center">
-        <form method="POST" action="/showTodo/list">
+    <div class="row justify-content-center btn-row">
+        <form method="get" action="/showTodo/list">
             @csrf
             <input class="btn btn-primary" type="submit" value="Todo一覧へ">
         </form>

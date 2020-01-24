@@ -2,7 +2,7 @@
 @section('content')
 <div class="flex-center position-ref full-height">
     <div class="container">
-        <form method="POST" action="/makeTodo/confirm">
+        <form id="make-confirm-form" method="get" action="/makeTodo/confirm">
             @csrf
             <div class="row">
                 <div class="col">
@@ -10,7 +10,10 @@
                         <tr>
                             <th>タイトル</th>
                             <td>
-                                <input class="form-control" id="title" name="title" type="text" requred>
+                                <input class="form-control @error('title') is-invalid @enderror" id="title" name="title" type="text" requred>
+                                @error('title')
+                                    <div class="alert alert-danger">入力されていない、もしくは３２文字を超えています。</div>
+                                @enderror
                             </td>
                         </tr>
                         <tr>
@@ -49,15 +52,17 @@
                     </table>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-3">
-                    <input class="btn btn-primary btn-block" type="submit" value="確認"> 
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-outline-secondary btn-block" type="button" onclick="history.back()">一覧へ戻る</button>
-                </div>
-            </div>
         </form>
+        <div class="row justify-content-center btn-row">
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" type="submit" form="make-confirm-form">確認</button>
+            </div>
+        </div>
+        <div class="row justify-content-center btn-row">
+            <div class="col-3">
+                @include('common.toListButton')
+            </div>
+        </div> 
     </div>
 </div>
 @endsection

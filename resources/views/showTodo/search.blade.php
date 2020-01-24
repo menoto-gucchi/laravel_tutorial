@@ -1,9 +1,8 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="flex-center position-ref full-height">
     <div class="container">
-        <form method="post" action="/showTodo/list">
+        <form id="search-form" method="get" action="/showTodo/list">
             @csrf
             <div class="row">
                 <div class="col">
@@ -30,7 +29,10 @@
                             <td>
                                 <input class="form-control" id="time_limit_start" name="time_limit_start" type="date">
                                 <span> ~ </span>
-                                <input class="form-control" id="time_limit_end" name="time_limit_end" type="date">
+                                <input class="form-control  @error('time_limit_end') is-invalid @enderror" id="time_limit_end" name="time_limit_end" type="date">
+                                @error('time_limit_end')
+                                    <div class="alert alert-danger">開始日以前の日付を終了日に指定しています。</div>
+                                @enderror
                             </td>
                         </tr>
                         <tr>
@@ -57,15 +59,17 @@
                     </table>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-3">
-                    <input class="btn btn-primary btn-block" type="submit" value="検索">
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-outline-secondary btn-block" type="button" onclick="history.back()">一覧画面へ戻る</button>
-                </div>
-            </div>
         </form>
+        <div class="row justify-content-center btn-row">
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" type="submit" form="search-form">検索</button>
+            </div>
+        </div>
+        <div class="row justify-content-center btn-row">
+            <div class="col-3">
+                @include('common.toListButton')
+            </div>
+        </div>
     </div>
 </div>
 @endsection

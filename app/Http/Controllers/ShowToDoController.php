@@ -15,6 +15,10 @@ class ShowTodoController extends Controller
 
     public function list(Request $req){
 
+        $validatedData = $req -> validate([
+            'time_limit_end' => 'nullable|date|after:time_limit_start',
+        ]);
+
         $data = new Todo();
 
         $data = $data -> where('user_id',Auth::id());
@@ -52,6 +56,6 @@ class ShowTodoController extends Controller
     }
 
     public function search(){
-        return view('showTodo.search',['result' => '']);
+        return view('showTodo.search');
     }
 }

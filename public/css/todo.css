@@ -1,5 +1,5 @@
-.btn {
-    margin:1em;
+.btn-row, .confirm-text-row,.complete-text-row {
+    margin-bottom:1em;
 }
 
 .card {

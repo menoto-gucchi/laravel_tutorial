@@ -2,7 +2,7 @@
 @section('content')
 <div class="flex-center position-ref full-height">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center confirm-text-row">
             <div class="col text-center">
                 この内容で作成しますか？
             </div>
@@ -35,9 +35,9 @@
                 </table>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center btn-row">
             <div class="col-3">
-                <form method="POST" action="/makeTodo/complete">
+                <form method="get" action="/makeTodo/complete">
                     @csrf
                     <input id="title" name="title" type="hidden" value={{$req->title}}>
                     <input id="time_limit" name="time_limit" type="hidden" value={{$req->time_limit}}>
@@ -50,7 +50,11 @@
                 <button class="btn btn-secondary btn-block" type="button" onclick="history.back()">修正</button>
             </div>
         </div>
-        @include('common.toListButtonRow')
+        <div class="row justify-content-center btn-row">
+            <div class="col-3">
+                @include('common.toListButton')
+            </div>
+        </div>
     </div>
 </div>
 @endsection

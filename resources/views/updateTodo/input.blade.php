@@ -2,7 +2,7 @@
 @section('content')
 <div class="flex-center position-ref full-height">
     <div class="container">
-        <form method="POST" action="/updateTodo/confirm">
+        <form id="update-confirm-form" method="get" action="/updateTodo/confirm">
             @csrf
             <div class="row">
                 <div class="col">
@@ -10,7 +10,11 @@
                         <tr>
                             <th>タイトル</th>
                             <td>
-                                <input class="form-control" id="title" name="title" type="text" value={{$req->title}} requred>
+                                <input class="form-control @error('title') is-invalid @enderror" id="title" name="title" type="text" value="{{$req->title}}" requred>
+                                </input>
+                                @error('title')
+                                    <div class="alert alert-danger">入力されていない、もしくは３２文字を超えています。</div>
+                                @enderror
                             </td>
                         </tr>
                         <tr>
@@ -86,17 +90,25 @@
                     </table>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-3">
-                    <input id="id" name="id" type="hidden" value={{$req->id}}>
-                    <input class="btn btn-primary btn-block" type="submit" value="確認">
-                </div>
-                <div class="col-3">
-                <button class="btn btn-secondary btn-block" type="button" onclick="history.back()">詳細へ戻る</button>
-                </div>
-            </div>
+            <input id="id" name="id" type="hidden" value={{$req->id}}>
         </form>
-        @include('common.toListButtonRow')
+        <div class="row justify-content-center btn-row">
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" type="submit" form="update-confirm-form">確認</button>
+            </div>
+            <div class="col-3">
+                <form method="get" action="/showTodo/detail">
+                    @csrf
+                    <input id="id" name="id" type="hidden" value={{$req->id}}>
+                    <input class="btn btn-secondary btn-block" type="submit" value="詳細へ戻る">
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center btn-row">
+            <div class="col-3">
+                @include('common.toListButton')
+            </div>
+        </div>
     </div>
 </div>
 @endsection

@@ -38,9 +38,9 @@
                 </table>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center btn-row">
             <div class="col-3">
-                <form method="POST" action="/updateTodo/input">
+                <form method="get" action="/updateTodo/input">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$todo->id}}>
                     <input id="title" name="title" type="hidden" value={{$todo->title}}>
@@ -52,16 +52,16 @@
                 </form>
             </div>
             <div class="col-3">
-                <form method="POST" action="/deleteTodo/confirm">
+                <form method="get" action="/deleteTodo/confirm">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$todo->id}}>
                     <input class="btn btn-danger btn-block" type="submit" value="削除">
                 </form>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center btn-row">
             <div class="col-3">
-                <button class="btn btn-secondary btn-block" type="button" onclick="history.back()">一覧へ戻る</button>
+                @include('common.toListButton')
             </div>
         </div>
     </div>

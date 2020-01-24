@@ -13,27 +13,27 @@
 
 // Route::get('/', function(){return view('welcome');});
 
-Route::post('showTodo/list', 'ShowTodoController@list');
+Route::get('showTodo/list', 'ShowTodoController@list');
 
-Route::post('showTodo/detail', 'ShowTodoController@detail');
+Route::get('showTodo/detail', 'ShowTodoController@detail');
 
-Route::post('showTodo/search', 'ShowTodoController@search');
+Route::get('showTodo/search', 'ShowTodoController@search');
 
-Route::post('makeTodo/input', 'MakeTodoController@input');
+Route::get('makeTodo/input', 'MakeTodoController@input');
 
-Route::post('makeTodo/confirm', 'MakeTodoController@confirm');
+Route::get('makeTodo/confirm', 'MakeTodoController@confirm');
 
-Route::post('makeTodo/complete', 'MakeTodoController@complete');
+Route::get('makeTodo/complete', 'MakeTodoController@complete');
 
-Route::post('updateTodo/input', 'UpdateTodoController@input');
+Route::get('updateTodo/input', 'UpdateTodoController@input');
 
-Route::post('updateTodo/confirm', 'UpdateTodoController@confirm');
+Route::get('updateTodo/confirm', 'UpdateTodoController@confirm');
 
-Route::post('updateTodo/complete', 'UpdateTodoController@complete');
+Route::get('updateTodo/complete', 'UpdateTodoController@complete');
 
-Route::post('deleteTodo/confirm', 'DeleteTodoController@confirm');
+Route::get('deleteTodo/confirm', 'DeleteTodoController@confirm');
 
-Route::post('deleteTodo/complete', 'DeleteTodoController@complete');
+Route::get('deleteTodo/complete', 'DeleteTodoController@complete');
 
 Auth::routes();
 
