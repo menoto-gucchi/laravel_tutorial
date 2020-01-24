@@ -26,19 +26,19 @@
                             <th>{{__('messages.priority_cls')}}</th>
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="not_chosen" name="priority_cls" type="radio" value="0" checked>
+                                    <input class="form-check-input" id="not_chosen" name="priority_cls" type="radio" value={{config('constant.not_chosen')}} checked>
                                     <label class="form-check-label" for="not_chosen">{{__('messages.not_chosen')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="hign" name="priority_cls" type="radio" value="1">
-                                    <label class="form-check-label" for="hign">{{__('messages.hign')}}</label>
+                                    <input class="form-check-input" id="high" name="priority_cls" type="radio" value={{config('constant.high')}}>
+                                    <label class="form-check-label" for="high">{{__('messages.high')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="middle" name="priority_cls" type="radio" value="2">
+                                    <input class="form-check-input" id="middle" name="priority_cls" type="radio" value={{config('constant.middle')}}>
                                     <label class="form-check-label" for="notmiddle_chosen">{{__('messages.middle')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="low" name="priority_cls" type="radio" value="3">
+                                    <input class="form-check-input" id="low" name="priority_cls" type="radio" value={{config('constant.low')}}>
                                     <label class="form-check-label" for="low">{{__('messages.low')}}</label>
                                 </div>
                             </td>

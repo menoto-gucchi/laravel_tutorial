@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center complete-text-row">
             <div class="col text-center">
-                {{__('messages.delete_complete_msg')}}
+                {{$msg}}
             </div>
         </div> 
         <div class="row justify-content-center btn-row">

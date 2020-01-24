@@ -30,7 +30,7 @@ return [
     'str' => '文字列',
 
     'not_chosen' => '-',
-    'hign' => '高',
+    'high' => '高',
     'middle' => '中',
     'low' => '低',
 

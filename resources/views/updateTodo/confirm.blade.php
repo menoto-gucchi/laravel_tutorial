@@ -15,9 +15,9 @@
                     </tr>
                     <tr>
                         <th>{{__('messages.comp_cls')}}</th>
-                        @if ($req->comp_cls == FALSE)
+                        @if ($req->comp_cls == config('constant.not_yet'))
                             <td>{{__('messages.not_yet')}}</td>
-                        @elseif ($req->comp_cls == TRUE)
+                        @elseif ($req->comp_cls == config('constant.comp'))
                             <td>{{__('messages.comp')}}</td>
                         @endif
                     </tr>
@@ -27,11 +27,11 @@
                     <tr>
                         <th>{{__('messages.priority_cls')}}</th>
                         @switch ($req->priority_cls)
-                            @case(1)
-                                <td>{{__('messages.hign')}}</td>@break
-                            @case(2)
+                            @case(config('constant.high'))
+                                <td>{{__('messages.high')}}</td>@break
+                            @case(config('constant.middle'))
                                 <td>{{__('messages.middle')}}</td>@break
-                            @case(3)
+                            @case(config('constant.low'))
                                 <td>{{__('messages.low')}}</td>@break
                             @default
                                 <td>{{__('messages.not_chosen')}}</td>@break

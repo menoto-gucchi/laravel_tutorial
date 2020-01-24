@@ -23,6 +23,6 @@ class DeleteTodoController extends Controller
 
         $data->delete();
 
-        return view('deleteTodo.complete', ['result' => '']);
+        return view('common.complete', ['msg' => __('messages.delete_complete_msg')]);
     }
 }

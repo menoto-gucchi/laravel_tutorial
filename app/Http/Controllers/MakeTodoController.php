@@ -41,6 +41,6 @@ class MakeTodoController extends Controller
 
         $todos ->save(); 
 
-        return view('makeTodo.complete', ['result' => '']);
+        return view('common.complete', ['msg' => __('messages.make_complete_msg')]);
     }
 }

@@ -21,16 +21,16 @@
                             <th>{{__('messages.comp_cls')}}</th>
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="not_yet" name="comp_cls" type="radio" value="0"
-                                    @if ($req->comp_cls == FALSE)
+                                    <input class="form-check-input" id="not_yet" name="comp_cls" type="radio" value={{config('constant.not_yet')}}
+                                    @if ($req->comp_cls == config('constant.not_yet'))
                                         checked
                                     @endif
                                     >
                                     <label class="form-check-label" for="not_yet">{{__('messages.not_yet')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="comp" name="comp_cls" type="radio" value="1"
-                                    @if ($req->comp_cls == TRUE)
+                                    <input class="form-check-input" id="comp" name="comp_cls" type="radio" value={{config('constant.comp')}}
+                                    @if ($req->comp_cls == config('constant.comp'))
                                         checked
                                     @endif
                                     >
@@ -48,32 +48,32 @@
                             <th>{{__('messages.priority_cls')}}</th>
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="not_chosen" name="priority_cls" type="radio" value="0"
-                                    @if ($req->priority_cls == 0)
+                                    <input class="form-check-input" id="not_chosen" name="priority_cls" type="radio" value={{config('constant.not_chosen')}}
+                                    @if ($req->priority_cls == config('constant.not_chosen'))
                                         checked
                                     @endif
                                     >
                                     <label class="form-check-label" for="not_chosen">{{__('messages.not_chosen')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="hign" name="priority_cls" type="radio" value="1"
-                                    @if ($req->priority_cls == 1)
+                                    <input class="form-check-input" id="high" name="priority_cls" type="radio" value={{config('constant.high')}}
+                                    @if ($req->priority_cls == config('constant.high'))
                                         checked
                                     @endif
                                     >
-                                    <label class="form-check-label" for="hign">{{__('messages.hign')}}</label>
+                                    <label class="form-check-label" for="high">{{__('messages.high')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="middle" name="priority_cls" type="radio" value="2"
-                                    @if ($req->priority_cls == 2)
+                                    <input class="form-check-input" id="middle" name="priority_cls" type="radio" value={{config('constant.middle')}}
+                                    @if ($req->priority_cls == config('constant.middle'))
                                         checked
                                     @endif
                                     >
                                     <label class="form-check-label" for="notmiddle_chosen">{{__('messages.middle')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="low" name="priority_cls" type="radio" value="3"
-                                    @if ($req->priority_cls == 3)
+                                    <input class="form-check-input" id="low" name="priority_cls" type="radio" value={{config('constant.low')}}
+                                    @if ($req->priority_cls == config('constant.low'))
                                         checked
                                     @endif
                                     >

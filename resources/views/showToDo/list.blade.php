@@ -32,9 +32,9 @@
                 <tr>
                     <td>{{$todo->title}}</td>
 
-                    @if ($todo->comp_cls == FALSE)
+                    @if ($todo->comp_cls == config('constant.not_yet'))
                         <td>{{__('messages.not_yet')}}</td>
-                    @elseif ($todo->comp_cls == TRUE)
+                    @elseif ($todo->comp_cls == config('constant.comp'))
                         <td>{{__('messages.comp')}}</td>
                     @endif
                     
