@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="row justify-content-center btn-row">
-            <div class="col-3">
+            <div class="col col-sm-3">
                 <form method="get" action="/makeTodo/complete">
                     @csrf
                     <input id="title" name="title" type="hidden" value={{$req->title}}>
@@ -46,12 +46,12 @@
                     <input class="btn btn-primary btn-block" type="submit" value={{__('messages.make')}}>
                 </form>
             </div>
-            <div class="col-3">
+            <div class="col col-sm-3">
                 <button class="btn btn-secondary btn-block" type="button" onclick="history.back()">{{__('messages.revise')}}</button>
             </div>
         </div>
         <div class="row justify-content-center btn-row">
-            <div class="col-3">
+            <div class="col col-sm-3">
                 @include('common.toListButton')
             </div>
         </div>

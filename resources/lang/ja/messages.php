@@ -8,6 +8,8 @@ return [
     'home' => 'ホーム',
     'logout' => 'ログアウト',
 
+    'todoList' => 'ToDo一覧',
+
     'make' => '作成',
     'search' => '検索',
 

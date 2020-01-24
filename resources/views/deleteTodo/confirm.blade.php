@@ -8,14 +8,14 @@
             </div>
         </div>
         <div class="row justify-content-center btn-row">
-            <div class="col-3">
+            <div class="col col-sm-3">
                 <form method="get" action="/deleteTodo/complete">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$req->id}}>
                     <input class="btn btn-danger btn-block" type="submit" value={{__('messages.delete')}}>
                 </form>
             </div>
-            <div class="col-3">
+            <div class="col col-sm-3">
                 <form method="get" action="/showTodo/detail">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$req->id}}>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="row justify-content-center btn-row">
-            <div class="col-3">
+            <div class="col col-sm-3">
                 @include('common.toListButton')
             </div>
         </div>

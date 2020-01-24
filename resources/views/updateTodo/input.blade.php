@@ -93,10 +93,10 @@
             <input id="id" name="id" type="hidden" value={{$req->id}}>
         </form>
         <div class="row justify-content-center btn-row">
-            <div class="col-3">
+            <div class="col col-sm-3">
                 <button class="btn btn-primary btn-block" type="submit" form="update-confirm-form">{{__('messages.confirm')}}</button>
             </div>
-            <div class="col-3">
+            <div class="col col-sm-3">
                 <form method="get" action="/showTodo/detail">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$req->id}}>
@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="row justify-content-center btn-row">
-            <div class="col-3">
+            <div class="col col-sm-3">
                 @include('common.toListButton')
             </div>
         </div>

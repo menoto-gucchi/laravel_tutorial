@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="row justify-content-center btn-row">
-            <div class="col-3">
+            <div class="col col-sm-3">
                 <form method="get" action="/updateTodo/input">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$todo->id}}>
@@ -51,7 +51,7 @@
                     <input class="btn btn-primary btn-block" type="submit" value={{__('messages.edit')}}>
                 </form>
             </div>
-            <div class="col-3">
+            <div class="col col-sm-3">
                 <form method="get" action="/deleteTodo/confirm">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$todo->id}}>
@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="row justify-content-center btn-row">
-            <div class="col-3">
+            <div class="col col-sm-3">
                 @include('common.toListButton')
             </div>
         </div>

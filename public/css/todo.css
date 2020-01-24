@@ -5,3 +5,8 @@
 .card {
     margin-bottom:1em;
 }
+
+.list_table > tbody > tr > th,
+.list_table > tbody > tr > td{
+    text-align: center;
+}

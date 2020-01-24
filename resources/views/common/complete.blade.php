@@ -8,7 +8,7 @@
             </div>
         </div> 
         <div class="row justify-content-center btn-row">
-            <div class="col-3">
+            <div class="col col-sm-3">
                 @include('common.toListButton')
             </div>
         </div>

@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="row justify-content-center btn-row">
-            <div class="col-3">
+            <div class="col col-sm-3">
                 <form method="get" action="/updateTodo/complete">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$req->id}}>
@@ -56,12 +56,12 @@
                     <input class="btn btn-primary btn-block" type="submit" value={{__('messages.update')}}>
                 </form>
             </div>
-            <div class="col-3">
+            <div class="col col-sm-3">
                 <button class="btn btn-secondary btn-block" type="button" onclick="history.back()">{{__('messages.revise')}}</button>
             </div>
         </div>
         <div class="row justify-content-center btn-row">
-            <div class="col-3">
+            <div class="col col-sm-3">
                 @include('common.toListButton')
             </div>
         </div>

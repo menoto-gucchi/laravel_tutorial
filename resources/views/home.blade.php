@@ -25,7 +25,7 @@
                 <div class="card-header">{{__('messages.newest_todo')}}</div>
 
                 <div class="card-body">
-                    @if (count($todo) == 0)
+                    @if (empty($todo))
                         <p>{{__('messages.not_found_todo')}}</p>
                     @else
                         <table class="table">
