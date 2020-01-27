@@ -19,7 +19,7 @@
                                     <label class="form-check-label" for="not_yet">{{__('messages.not_yet')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="comp" name="comp_cls[]" type="checkbox" value={{config('constant.comp')}} checked>
+                                    <input class="form-check-input" id="comp" name="comp_cls[]" type="checkbox" value={{config('constant.comp')}}>
                                     <label class="form-check-label" for="comp">{{__('messages.comp')}}</label>
                                 </div>
                             </td>
@@ -53,6 +53,32 @@
                                 <div class="form-check">
                                     <input class="form-check-input" id="low" name="priority_cls[]" type="checkbox" value={{config('constant.low')}} checked>
                                     <label class="form-check-label" for="low">{{__('messages.low')}}</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{__('messages.sort')}}</th>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="sort_time_limit" name="sort_column" type="radio" value="time_limit" checked>
+                                    <label class="form-check-label" for="time_limit_asc">{{__('messages.time_limit')}}</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="sort_created_at" name="sort_column" type="radio" value="created_at">
+                                    <label class="form-check-label" for="sort_created_at">{{__('messages.created_at')}}</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="sort_updated_at" name="sort_column" type="radio" value="updated_at">
+                                    <label class="form-check-label" for="sort_updated_at">{{__('messages.updated_at')}}</label>
+                                </div>
+                                <br>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="asc" name="asc_desc" type="radio" value="asc" checked>
+                                    <label class="form-check-label" for="asc">{{__('messages.asc')}}</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="desc" name="asc_desc" type="radio" value="desc">
+                                    <label class="form-check-label" for="desc">{{__('messages.desc')}}</label>
                                 </div>
                             </td>
                         </tr>

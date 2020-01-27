@@ -35,6 +35,12 @@
                     <tr>
                         <th>{{__('messages.description')}}</th><td>{{$todo->description}}</td>
                     </tr>
+                    <tr>
+                        <th>{{__('messages.created_at')}}</th><td>{{$todo->created_at}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{__('messages.updated_at')}}</th><td>{{$todo->updated_at}}</td>
+                    </tr>
                 </table>
             </div>
         </div>

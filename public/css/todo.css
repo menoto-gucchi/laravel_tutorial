@@ -10,3 +10,16 @@
 .list_table > tbody > tr > td{
     text-align: center;
 }
+
+.list-btn {
+    width:100%;
+    min-height:100px;
+    white-space:normal;
+    word-break:normal;
+}
+
+.list-card{
+    min-height:100px;
+    margin-bottom:1em;
+}
+

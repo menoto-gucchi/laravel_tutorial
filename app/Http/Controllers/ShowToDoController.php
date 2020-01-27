@@ -30,6 +30,8 @@ class ShowTodoController extends Controller
 
         if (!empty($req->comp_cls)){
             $data = $data -> whereIn('comp_cls',$req->comp_cls);
+        } else {
+            $data = $data -> where('comp_cls',config('constant.not_yet'));
         }
 
         if (!empty($req->time_limit_start)){
@@ -42,6 +44,12 @@ class ShowTodoController extends Controller
 
         if (!empty($req->priority_cls)){
             $data = $data -> whereIn('priority_cls',$req->priority_cls);
+        }
+
+        if (!empty($req->time_limit_sort)){
+            $data = $data -> orderBy($req->sort_column,$req->asc_desc);
+        } else {
+            $data = $data -> orderBy('time_limit', 'asc');
         }
 
         $data = ['todoList' => $data ->get()];

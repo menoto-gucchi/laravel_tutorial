@@ -8,7 +8,7 @@ return [
     'home' => 'ホーム',
     'logout' => 'ログアウト',
 
-    'todoList' => 'ToDo一覧',
+    'todo_list' => 'ToDo一覧',
 
     'make' => '作成',
     'search' => '検索',
@@ -56,6 +56,11 @@ return [
     'delete_confirm_msg' => '本当に削除しますか？',
     'delete_complete_msg' => '削除が完了しました。',
 
+    'sort' => 'ソート',
+    'asc' => '昇順',
+    'desc' => '降順',
 
+    'created_at' => '作成日時',
+    'updated_at' => '更新日時',
 
 ];
