@@ -30,7 +30,7 @@
                     @else
                         <table class="table">
                             <tr>
-                                <th>{{__('messages.title')}}</th><td>{{$todo[0]->title}}</td>
+                                <th><nobr>{{__('messages.title')}}</nobr></th><td>{{$todo[0]->title}}</td>
                             </tr>
                             <tr>
                                 <th>{{__('messages.comp_cls')}}</th>

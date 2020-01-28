@@ -11,7 +11,7 @@
             <div class="col">
                 <table class="table">
                     <tr>
-                        <th>{{__('messages.title')}}</th><td>{{$req->title}}</td>
+                        <th><nobr>{{__('messages.title')}}</nobr></th><td>{{$req->title}}</td>
                     </tr>
                     <tr>
                         <th>{{__('messages.comp_cls')}}</th>

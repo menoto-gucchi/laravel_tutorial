@@ -6,7 +6,7 @@
             <div class="col">
                 <table class="table">
                     <tr>
-                        <th>{{__('messages.title')}}</th><td>{{$todo->title}}</td>
+                        <th><nobr>{{__('messages.title')}}</nobr></th><td>{{$todo->title}}</td>
                     </tr>
                     <tr>
                         <th>{{__('messages.comp_cls')}}</th>
