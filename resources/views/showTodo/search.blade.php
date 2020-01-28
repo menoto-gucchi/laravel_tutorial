@@ -9,17 +9,17 @@
                     <table class="table">
                         <tr>
                             <th>{{__('messages.str')}}</th>
-                            <td><input class="form-control" id="str" name="str" type="text"></td>
+                            <td><input class="form-control" id="str" name="str" type="text" value={{$req['str']}}></td>
                         </tr>
                         <tr>
                             <th>{{__('messages.comp_cls')}}</th>
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="not_yet" name="comp_cls[]" type="checkbox" value={{config('constant.not_yet')}} checked>
+                                    <input class="form-check-input" id="not_yet" name="comp_cls[]" type="checkbox" value={{config('constant.not_yet')}} @if (in_array(config('constant.not_yet'),$req['comp_cls'])) checked @endif>
                                     <label class="form-check-label" for="not_yet">{{__('messages.not_yet')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="comp" name="comp_cls[]" type="checkbox" value={{config('constant.comp')}}>
+                                    <input class="form-check-input" id="comp" name="comp_cls[]" type="checkbox" value={{config('constant.comp')}} @if (in_array(config('constant.comp'),$req['comp_cls']))  checked @endif>
                                     <label class="form-check-label" for="comp">{{__('messages.comp')}}</label>
                                 </div>
                             </td>
@@ -27,9 +27,9 @@
                         <tr>
                             <th>{{__('messages.time_limit')}}</th>
                             <td>
-                                <input class="form-control" id="time_limit_start" name="time_limit_start" type="date">
+                                <input class="form-control" id="time_limit_start" name="time_limit_start" type="date" value={{$req['time_limit_start']}}>
                                 <span> ~ </span>
-                                <input class="form-control  @error('time_limit_end') is-invalid @enderror" id="time_limit_end" name="time_limit_end" type="date">
+                                <input class="form-control  @error('time_limit_end') is-invalid @enderror" id="time_limit_end" name="time_limit_end" type="date" value={{$req['time_limit_end']}}>
                                 @error('time_limit_end')
                                     <div class="alert alert-danger">{{__('messages.date_err_msg')}}</div>
                                 @enderror
@@ -39,20 +39,20 @@
                             <th>{{__('messages.priority_cls')}}</th>
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="not_chosen" name="priority_cls[]" type="checkbox" value={{config('constant.not_chosen')}} checked>
-                                    <label class="form-check-label" for="not_chosen">{{__('messages.not_chosen')}}</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" id="high" name="priority_cls[]" type="checkbox" value={{config('constant.high')}} checked>
+                                    <input class="form-check-input" id="high" name="priority_cls[]" type="checkbox" value={{config('constant.high')}} @if (in_array(config('constant.high'),$req['priority_cls'])) checked @endif>
                                     <label class="form-check-label" for="high">{{__('messages.high')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="middle" name="priority_cls[]" type="checkbox" value={{config('constant.middle')}} checked>
+                                    <input class="form-check-input" id="middle" name="priority_cls[]" type="checkbox" value={{config('constant.middle')}} @if (in_array(config('constant.middle'),$req['priority_cls'])) checked @endif>
                                     <label class="form-check-label" for="middle">{{__('messages.middle')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="low" name="priority_cls[]" type="checkbox" value={{config('constant.low')}} checked>
+                                    <input class="form-check-input" id="low" name="priority_cls[]" type="checkbox" value={{config('constant.low')}} @if (in_array(config('constant.low'),$req['priority_cls'])) checked @endif>
                                     <label class="form-check-label" for="low">{{__('messages.low')}}</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="not_chosen" name="priority_cls[]" type="checkbox" value={{config('constant.not_chosen')}} @if (in_array(config('constant.not_chosen'),$req['priority_cls'])) checked @endif>
+                                    <label class="form-check-label" for="not_chosen">{{__('messages.not_chosen')}}</label>
                                 </div>
                             </td>
                         </tr>
@@ -60,24 +60,24 @@
                             <th>{{__('messages.sort')}}</th>
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="sort_time_limit" name="sort_column" type="radio" value="time_limit" checked>
-                                    <label class="form-check-label" for="time_limit_asc">{{__('messages.time_limit')}}</label>
+                                    <input class="form-check-input" id="sort_time_limit" name="sort_column" type="radio" value="time_limit"  @if ($req['sort_column']=="time_limit")) checked @endif>
+                                    <label class="form-check-label" for="sort_time_limit">{{__('messages.time_limit')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="sort_created_at" name="sort_column" type="radio" value="created_at">
+                                    <input class="form-check-input" id="sort_created_at" name="sort_column" type="radio" value="created_at" @if ($req['sort_column']=="created_at") checked @endif>
                                     <label class="form-check-label" for="sort_created_at">{{__('messages.created_at')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="sort_updated_at" name="sort_column" type="radio" value="updated_at">
+                                    <input class="form-check-input" id="sort_updated_at" name="sort_column" type="radio" value="updated_at" @if ($req['sort_column']=="updated_at") checked @endif>
                                     <label class="form-check-label" for="sort_updated_at">{{__('messages.updated_at')}}</label>
                                 </div>
                                 <br>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="asc" name="asc_desc" type="radio" value="asc" checked>
+                                    <input class="form-check-input" id="asc" name="asc_desc" type="radio" value="asc" @if ($req['asc_desc']=="asc") checked @endif>
                                     <label class="form-check-label" for="asc">{{__('messages.asc')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="desc" name="asc_desc" type="radio" value="desc">
+                                    <input class="form-check-input" id="desc" name="asc_desc" type="radio" value="desc" @if ($req['asc_desc']=="desc") checked @endif>
                                     <label class="form-check-label" for="desc">{{__('messages.desc')}}</label>
                                 </div>
                             </td>

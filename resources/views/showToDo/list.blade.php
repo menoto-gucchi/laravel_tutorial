@@ -2,7 +2,7 @@
 @section('content')
 <div class="flex-center position-ref full-height">
     <div class="container">
-        <div class="row justify-content-center btn-row">
+        <div class="row justify-content-left btn-row">
             <div class="col col-sm-3">
                 <form method="get" action="/makeTodo/input">
                     @csrf
@@ -23,13 +23,7 @@
                 </div>
             </div>
         @else
-            <div class="row justify-content-center">
-                <div class="col text-center">
-                    <p>{{__('messages.todo_list')}}</p>
-                </div>
-            </div>
-            
-            <div class="row justify-content-center btn-row">
+            <div class="row justify-content-left btn-row">
                 @foreach ($todoList as $todo)
                 <div class="col-12 col-sm-6 list-card">
                     <div>

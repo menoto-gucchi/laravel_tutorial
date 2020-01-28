@@ -19,37 +19,90 @@ class ShowTodoController extends Controller
             'time_limit_end' => 'nullable|date|after:time_limit_start',
         ]);
 
-        $data = new Todo();
+        $empty = empty(session('search_arr'));
+        $search_arr = session('search_arr');
 
+        if ($req->has('str')){
+            $array['str']=$req->str;
+        } 
+        else {
+            $array['str']=($empty or empty($search_arr['str'])) ? '' : $search_arr['str'];
+        }
+
+        if ($req->has('comp_cls')){
+            $array['comp_cls']=$req->comp_cls;
+        } 
+        else {
+            $array['comp_cls']=($empty or empty($search_arr['comp_cls'])) ? array(config('constant.not_yet')) : $search_arr['comp_cls'];
+        }
+
+        if ($req->has('time_limit_start')){
+            $array['time_limit_start']=$req->time_limit_start;
+        } 
+        else {
+            $array['time_limit_start']=($empty or empty($search_arr['time_limit_start'])) ? '' : $search_arr['time_limit_start'];
+        }
+
+        if ($req->has('time_limit_end')){
+            $array['time_limit_end']=$req->time_limit_end;
+        } 
+        else {
+            $array['time_limit_end']=($empty or empty($search_arr['time_limit_end'])) ? '' : $search_arr['time_limit_end'];
+        }
+
+        if ($req->has('priority_cls')){
+            $array['priority_cls']=$req->priority_cls;
+        } 
+        else {
+            $array['priority_cls']=($empty or empty($search_arr['priority_cls'])) 
+                ? array(config('constant.high'),config('constant.middle'),config('constant.low'),config('constant.not_chosen'))
+                : $search_arr['priority_cls'];
+        }
+
+        if ($req->has('sort_column')){
+            $array['sort_column']=$req->sort_column;
+        } 
+        else {
+            $array['sort_column']=($empty or empty($search_arr['sort_column'])) ? 'time_limit' : $search_arr['sort_column'];
+        }
+
+        if ($req->has('asc_desc')){
+            $array['asc_desc']=$req->asc_desc;
+        } 
+        else {
+            $array['asc_desc']=($empty or empty($search_arr['asc_desc'])) ? 'asc' : $search_arr['asc_desc'];
+        }
+
+        session()->put('search_arr',$array);
+
+        $data = new Todo();
         $data = $data -> where('user_id',Auth::id());
 
-        if (!empty($req -> str)){
-            $data = $data -> where('title','LIKE','%'.$req -> str.'%')
-                -> orWhere('description','LIKE','%'.$req -> str.'%');
+        if (!empty($array['str'])) {
+            $data = $data -> whereRaw("(title like '%".$array['str']."%' OR description like '%".$array['str']."%')");
         }
 
-        if (!empty($req->comp_cls)){
-            $data = $data -> whereIn('comp_cls',$req->comp_cls);
-        } else {
-            $data = $data -> where('comp_cls',config('constant.not_yet'));
+        if (!empty($array['comp_cls'])) {
+            $data = $data -> whereIn('comp_cls',$array['comp_cls']);
         }
 
-        if (!empty($req->time_limit_start)){
-            $data = $data -> whereDate('time_limit','>',$req -> time_limit_start);
+        if (!empty($array['time_limit_start'])) {
+            $data = $data -> whereDate('time_limit','>',$array['time_limit_start']);
         }
 
-        if (!empty($req->time_limit_end)){
-            $data = $data -> whereDate('time_limit','<',$req -> time_limit_end);
+        if (!empty($array['time_limit_end'])) {
+            $data = $data -> whereDate('time_limit','<',$array['time_limit_end']);
         }
 
-        if (!empty($req->priority_cls)){
-            $data = $data -> whereIn('priority_cls',$req->priority_cls);
+        if (!empty($array['priority_cls'])) {
+            $data = $data -> whereIn('priority_cls',$array['priority_cls']);
         }
 
-        if (!empty($req->time_limit_sort)){
-            $data = $data -> orderBy($req->sort_column,$req->asc_desc);
-        } else {
-            $data = $data -> orderBy('time_limit', 'asc');
+        if (!(empty($array['sort_column']) or empty($array['asc_desc']))) {
+            $data = $data -> orderBy($array['sort_column'],$array['asc_desc']);
+        }
+        else {
+            $data = $data -> orderBy("time_limit","asc");
         }
 
         $data = ['todoList' => $data ->get()];
@@ -63,7 +116,22 @@ class ShowTodoController extends Controller
         return view('showTodo.detail',$data);
     }
 
-    public function search(){
-        return view('showTodo.search');
+    public function search(Request $req){
+
+        $empty = empty(session('search_arr'));
+        $search_arr = session('search_arr');
+
+        $data['str']=($empty or empty($search_arr['str'])) ? '' : $search_arr['str'];
+        $data['comp_cls']=($empty or empty($search_arr['comp_cls'])) ? array(config('constant.not_yet')) : $search_arr['comp_cls'];
+        $data['time_limit_start']=($empty or empty($search_arr['time_limit_start'])) ? '' : $search_arr['time_limit_start'];
+        $data['time_limit_end']=($empty or empty($search_arr['time_limit_end'])) ? '' : $search_arr['time_limit_end'];
+        $data['priority_cls']=($empty or empty($search_arr['priority_cls'])) 
+            ? array(config('constant.high'),config('constant.middle'),config('constant.low'),config('constant.not_chosen'))
+            : $search_arr['priority_cls'];
+        $data['sort_column']=($empty or empty($search_arr['sort_column'])) ? 'time_limit' : $search_arr['sort_column'];
+        $data['asc_desc']=($empty or empty($search_arr['asc_desc'])) ? 'asc' : $search_arr['asc_desc'];
+        $data = ['req' => $data];
+
+        return view('showTodo.search', $data);
     }
 }

@@ -26,10 +26,6 @@
                             <th>{{__('messages.priority_cls')}}</th>
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="not_chosen" name="priority_cls" type="radio" value={{config('constant.not_chosen')}} checked>
-                                    <label class="form-check-label" for="not_chosen">{{__('messages.not_chosen')}}</label>
-                                </div>
-                                <div class="form-check">
                                     <input class="form-check-input" id="high" name="priority_cls" type="radio" value={{config('constant.high')}}>
                                     <label class="form-check-label" for="high">{{__('messages.high')}}</label>
                                 </div>
@@ -40,6 +36,10 @@
                                 <div class="form-check">
                                     <input class="form-check-input" id="low" name="priority_cls" type="radio" value={{config('constant.low')}}>
                                     <label class="form-check-label" for="low">{{__('messages.low')}}</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="not_chosen" name="priority_cls" type="radio" value={{config('constant.not_chosen')}} checked>
+                                    <label class="form-check-label" for="not_chosen">{{__('messages.not_chosen')}}</label>
                                 </div>
                             </td>
                         </tr>
