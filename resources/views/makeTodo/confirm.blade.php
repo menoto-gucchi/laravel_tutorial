@@ -18,16 +18,7 @@
                     </tr>
                     <tr>
                         <th>{{__('messages.priority_cls')}}</th>
-                        @switch ($req->priority_cls)
-                            @case(config('constant.high'))
-                                <td>{{__('messages.high')}}</td>@break
-                            @case(config('constant.middle'))
-                                <td>{{__('messages.middle')}}</td>@break
-                            @case(config('constant.low'))
-                                <td>{{__('messages.low')}}</td>@break
-                            @default
-                                <td>{{__('messages.not_chosen')}}</td>@break
-                        @endswitch
+                        <td>{{CommonUtils::convert_priority_cls_num_to_str($req->priority_cls)}}</td>
                     </tr>
                     <tr>
                         <th>{{__('messages.description')}}</th><td>{{$req->description}}</td>

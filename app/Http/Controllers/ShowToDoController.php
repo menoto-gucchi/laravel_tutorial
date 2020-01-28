@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Todo;
 use Auth;
+use CommonUtils;
 
 class ShowTodoController extends Controller
 {
@@ -20,61 +21,64 @@ class ShowTodoController extends Controller
         ]);
 
         $empty = empty(session('search_arr'));
+
+        //セッションから直前の検索条件を取得
+        //検索画面で検索した場合はRequestから条件を取得
         $search_arr = session('search_arr');
 
         if ($req->has('str')){
             $array['str']=$req->str;
         } 
         else {
-            $array['str']=($empty or empty($search_arr['str'])) ? '' : $search_arr['str'];
+            $array['str']=CommonUtils::getStrFromArray($search_arr);
         }
 
         if ($req->has('comp_cls')){
             $array['comp_cls']=$req->comp_cls;
         } 
         else {
-            $array['comp_cls']=($empty or empty($search_arr['comp_cls'])) ? array(config('constant.not_yet')) : $search_arr['comp_cls'];
+            $array['comp_cls']=CommonUtils::getCompClsFromArray($search_arr);
         }
 
         if ($req->has('time_limit_start')){
             $array['time_limit_start']=$req->time_limit_start;
         } 
         else {
-            $array['time_limit_start']=($empty or empty($search_arr['time_limit_start'])) ? '' : $search_arr['time_limit_start'];
+            $array['time_limit_start']=CommonUtils::getTimeLimitStartFromArray($search_arr);
         }
 
         if ($req->has('time_limit_end')){
             $array['time_limit_end']=$req->time_limit_end;
         } 
         else {
-            $array['time_limit_end']=($empty or empty($search_arr['time_limit_end'])) ? '' : $search_arr['time_limit_end'];
+            $array['time_limit_end']=CommonUtils::getTimeLimitEndFromArray($search_arr);
         }
 
         if ($req->has('priority_cls')){
             $array['priority_cls']=$req->priority_cls;
         } 
         else {
-            $array['priority_cls']=($empty or empty($search_arr['priority_cls'])) 
-                ? array(config('constant.high'),config('constant.middle'),config('constant.low'),config('constant.not_chosen'))
-                : $search_arr['priority_cls'];
+            $array['priority_cls']=CommonUtils::getPriorityClsFromArray($search_arr);
         }
 
         if ($req->has('sort_column')){
             $array['sort_column']=$req->sort_column;
         } 
         else {
-            $array['sort_column']=($empty or empty($search_arr['sort_column'])) ? 'time_limit' : $search_arr['sort_column'];
+            $array['sort_column']=CommonUtils::getSortColumnFromArray($search_arr);
         }
 
         if ($req->has('asc_desc')){
             $array['asc_desc']=$req->asc_desc;
         } 
         else {
-            $array['asc_desc']=($empty or empty($search_arr['asc_desc'])) ? 'asc' : $search_arr['asc_desc'];
+            $array['asc_desc']=CommonUtils::getAscDescFromArray($search_arr);
         }
 
+        //検索条件をセッションに保存
         session()->put('search_arr',$array);
 
+        //DB処理
         $data = new Todo();
         $data = $data -> where('user_id',Auth::id());
 
@@ -118,18 +122,17 @@ class ShowTodoController extends Controller
 
     public function search(Request $req){
 
+        //直前の検索条件を取得し、画面に反映
         $empty = empty(session('search_arr'));
         $search_arr = session('search_arr');
 
-        $data['str']=($empty or empty($search_arr['str'])) ? '' : $search_arr['str'];
-        $data['comp_cls']=($empty or empty($search_arr['comp_cls'])) ? array(config('constant.not_yet')) : $search_arr['comp_cls'];
-        $data['time_limit_start']=($empty or empty($search_arr['time_limit_start'])) ? '' : $search_arr['time_limit_start'];
-        $data['time_limit_end']=($empty or empty($search_arr['time_limit_end'])) ? '' : $search_arr['time_limit_end'];
-        $data['priority_cls']=($empty or empty($search_arr['priority_cls'])) 
-            ? array(config('constant.high'),config('constant.middle'),config('constant.low'),config('constant.not_chosen'))
-            : $search_arr['priority_cls'];
-        $data['sort_column']=($empty or empty($search_arr['sort_column'])) ? 'time_limit' : $search_arr['sort_column'];
-        $data['asc_desc']=($empty or empty($search_arr['asc_desc'])) ? 'asc' : $search_arr['asc_desc'];
+        $data['str']=CommonUtils::getStrFromArray($search_arr);
+        $data['comp_cls']=CommonUtils::getCompClsFromArray($search_arr);
+        $data['time_limit_start']=CommonUtils::getTimeLimitStartFromArray($search_arr);
+        $data['time_limit_end']=CommonUtils::getTimeLimitEndFromArray($search_arr);
+        $data['priority_cls']=CommonUtils::getPriorityClsFromArray($search_arr);
+        $data['sort_column']=CommonUtils::getSortColumnFromArray($search_arr);
+        $data['asc_desc']=CommonUtils::getAscDescFromArray($search_arr);
         $data = ['req' => $data];
 
         return view('showTodo.search', $data);

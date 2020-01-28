@@ -10,27 +10,14 @@
                     </tr>
                     <tr>
                         <th>{{__('messages.comp_cls')}}</th>
-                        @if ($todo->comp_cls == config('constant.not_yet'))
-                            <td>{{__('messages.not_yet')}}</td>
-                        @elseif ($todo->comp_cls == config('constant.comp'))
-                            <td>{{__('messages.comp')}}</td>
-                        @endif
+                        <td>{{CommonUtils::convert_comp_cls_num_to_str($todo->comp_cls)}}</td>
                     </tr>
                     <tr>
                         <th>{{__('messages.time_limit')}}</th><td>{{$todo->time_limit}}</td>
                     </tr>
                     <tr>
                         <th>{{__('messages.priority_cls')}}</th>
-                        @switch ($todo->priority_cls)
-                            @case(config('constant.high'))
-                                <td>{{__('messages.high')}}</td>@break
-                            @case(config('constant.middle'))
-                                <td>{{__('messages.middle')}}</td>@break
-                            @case(config('constant.low'))
-                                <td>{{__('messages.low')}}</td>@break
-                            @default
-                                <td>{{__('messages.title')}}</td>@break
-                        @endswitch
+                        <td>{{CommonUtils::convert_priority_cls_num_to_str($todo->priority_cls)}}</td>
                     </tr>
                     <tr>
                         <th>{{__('messages.description')}}</th><td>{{$todo->description}}</td>
