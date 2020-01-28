@@ -30,49 +30,49 @@ class ShowTodoController extends Controller
             $array['str']=$req->str;
         } 
         else {
-            $array['str']=CommonUtils::getStrFromArray($search_arr);
+            $array['str']=CommonUtils::get_str_from_array($search_arr);
         }
 
         if ($req->has('comp_cls')){
             $array['comp_cls']=$req->comp_cls;
         } 
         else {
-            $array['comp_cls']=CommonUtils::getCompClsFromArray($search_arr);
+            $array['comp_cls']=CommonUtils::get_comp_cls_from_array($search_arr);
         }
 
         if ($req->has('time_limit_start')){
             $array['time_limit_start']=$req->time_limit_start;
         } 
         else {
-            $array['time_limit_start']=CommonUtils::getTimeLimitStartFromArray($search_arr);
+            $array['time_limit_start']=CommonUtils::get_timelimit_start_from_array($search_arr);
         }
 
         if ($req->has('time_limit_end')){
             $array['time_limit_end']=$req->time_limit_end;
         } 
         else {
-            $array['time_limit_end']=CommonUtils::getTimeLimitEndFromArray($search_arr);
+            $array['time_limit_end']=CommonUtils::get_timelimit_end_from_array($search_arr);
         }
 
         if ($req->has('priority_cls')){
             $array['priority_cls']=$req->priority_cls;
         } 
         else {
-            $array['priority_cls']=CommonUtils::getPriorityClsFromArray($search_arr);
+            $array['priority_cls']=CommonUtils::get_priority_cls_from_array($search_arr);
         }
 
         if ($req->has('sort_column')){
             $array['sort_column']=$req->sort_column;
         } 
         else {
-            $array['sort_column']=CommonUtils::getSortColumnFromArray($search_arr);
+            $array['sort_column']=CommonUtils::get_sort_column_from_array($search_arr);
         }
 
         if ($req->has('asc_desc')){
             $array['asc_desc']=$req->asc_desc;
         } 
         else {
-            $array['asc_desc']=CommonUtils::getAscDescFromArray($search_arr);
+            $array['asc_desc']=CommonUtils::get_asc_desc_from_array($search_arr);
         }
 
         //検索条件をセッションに保存
@@ -126,13 +126,13 @@ class ShowTodoController extends Controller
         $empty = empty(session('search_arr'));
         $search_arr = session('search_arr');
 
-        $data['str']=CommonUtils::getStrFromArray($search_arr);
-        $data['comp_cls']=CommonUtils::getCompClsFromArray($search_arr);
-        $data['time_limit_start']=CommonUtils::getTimeLimitStartFromArray($search_arr);
-        $data['time_limit_end']=CommonUtils::getTimeLimitEndFromArray($search_arr);
-        $data['priority_cls']=CommonUtils::getPriorityClsFromArray($search_arr);
-        $data['sort_column']=CommonUtils::getSortColumnFromArray($search_arr);
-        $data['asc_desc']=CommonUtils::getAscDescFromArray($search_arr);
+        $data['str']=CommonUtils::get_str_from_array($search_arr);
+        $data['comp_cls']=CommonUtils::get_comp_cls_from_array($search_arr);
+        $data['time_limit_start']=CommonUtils::get_timelimit_start_from_array($search_arr);
+        $data['time_limit_end']=CommonUtils::get_timelimit_end_from_array($search_arr);
+        $data['priority_cls']=CommonUtils::get_priority_cls_from_array($search_arr);
+        $data['sort_column']=CommonUtils::get_sort_column_from_array($search_arr);
+        $data['asc_desc']=CommonUtils::get_asc_desc_from_array($search_arr);
         $data = ['req' => $data];
 
         return view('showTodo.search', $data);
