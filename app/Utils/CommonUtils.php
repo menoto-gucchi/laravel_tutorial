@@ -5,26 +5,18 @@ namespace App\Utils;
 class CommonUtils
 {
     public static function convert_comp_cls_num_to_str($comp_cls){
-        if ($comp_cls == config('constant.not_yet')){
-            return __('messages.not_yet');
-        }
-        elseif ($comp_cls == config('constant.comp')){
-            return __('messages.comp');
+        switch($comp_cls){
+            case config('constant.not_yet') : return __('messages.not_yet');break;
+            case config('constant.comp') : return __('messages.comp');break;
         }
     }
 
-    public static function convert_priority_cls_num_to_str($comp_cls){
-        if ($comp_cls == config('constant.high')){
-            return __('messages.high');
-        }
-        elseif ($comp_cls == config('constant.middle')){
-            return __('messages.middle');
-        }
-        elseif ($comp_cls == config('constant.low')){
-            return __('messages.low');
-        }
-        elseif ($comp_cls == config('constant.not_chosen')){
-            return __('messages.not_chosen');
+    public static function convert_priority_cls_num_to_str($priority_cls){
+        switch($priority_cls){
+            case config('constant.high') : return __('messages.high');break;
+            case config('constant.middle') : return __('messages.middle');break;
+            case config('constant.low') : return __('messages.low');break;
+            case config('constant.not_chosen') : return __('messages.not_chosen');break;
         }
     }
 
@@ -56,5 +48,19 @@ class CommonUtils
 
     public static function getAscDescFromArray($search_arr){
         return (empty($search_arr) or empty($search_arr['asc_desc'])) ? 'asc' : $search_arr['asc_desc'];
+    }
+
+    public static function getListCardColor($comp_cls,$priority_cls){
+        if ($comp_cls == config('constant.comp')) {
+            return 'btn-light';
+        }
+
+        switch($priority_cls){
+            case config('constant.high') : return 'btn-outline-danger';break;
+            case config('constant.middle') : return 'btn-outline-warning';break;
+            case config('constant.low') : return 'btn-outline-info';break;
+            case config('constant.not_chosen') : return 'btn-outline-dark';break;
+        }
+
     }
 }

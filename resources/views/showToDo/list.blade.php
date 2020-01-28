@@ -30,7 +30,7 @@
                         <form id="to-detail-form" method="get" action="/showTodo/detail">
                             @csrf
                             <input id="id" name="id" type="hidden" value={{$todo->id}}>
-                            <button class="btn btn-outline-dark list-btn" type="submit" @if ($todo->comp_cls == config('constant.comp')) style="background-color:#c0c0c0;" @endif>{{$todo->title}}<br>{{$todo->time_limit}}</button>
+                            <button class="btn {{CommonUtils::getListCardColor($todo->comp_cls,$todo->priority_cls)}} list-btn" type="submit">{{$todo->title}}<br>{{$todo->time_limit}}</button>
                         </form>
                     </div>
                 </div>
