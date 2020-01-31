@@ -82,32 +82,13 @@ class ShowTodoController extends Controller
         $data = new Todo();
         $data = $data->where('user_id',Auth::id());
 
-        if (!empty($array['str'])) {
-            $data = $data->whereRaw("(title like '%".$array['str']."%' OR description like '%".$array['str']."%')");
-        }
-
-        if (!empty($array['comp_cls'])) {
-            $data = $data->whereIn('comp_cls',$array['comp_cls']);
-        }
-
-        if (!empty($array['time_limit_start'])) {
-            $data = $data->whereDate('time_limit','>',$array['time_limit_start']);
-        }
-
-        if (!empty($array['time_limit_end'])) {
-            $data = $data->whereDate('time_limit','<',$array['time_limit_end']);
-        }
-
-        if (!empty($array['priority_cls'])) {
-            $data = $data->whereIn('priority_cls',$array['priority_cls']);
-        }
-
-        if (!(empty($array['sort_column']) or empty($array['asc_desc']))) {
-            $data = $data->orderBy($array['sort_column'],$array['asc_desc']);
-        }
-        else {
-            $data = $data->orderBy("time_limit","asc");
-        }
+        $data = Todo::FindUserId()
+            ->FindStr($array['str'])
+            ->FindCompCls($array['comp_cls'])
+            ->FindTimeLimitStart($array['time_limit_start'])
+            ->FindTimeLimitEnd($array['time_limit_end'])
+            ->FindPriorityCls($array['priority_cls'])
+            ->OrderSort($array['sort_column'], $array['asc_desc']);
 
         $data = ['todoList' => $data->get()];
 
