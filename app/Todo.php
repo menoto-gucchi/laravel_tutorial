@@ -9,6 +9,16 @@ class Todo extends Model
 {
     protected $fillable = ['user_id','title','comp_cls','time_limit','priority_cls','description'];
 
+    //完了区分
+    public static $not_yet = 0;
+    public static $comp = 1;
+
+    //優先度
+    public static $not_chosen = 0;
+    public static $high = 1;
+    public static $middle = 2;
+    public static $low = 3;
+
     public function scopeFindUserId($query){
         $query->where('user_id',Auth::id());
     }
@@ -29,7 +39,7 @@ class Todo extends Model
 
     public function scopeFindTimeLimitStart($query, $time_limit_start){
         if (!empty($time_limit_start)) {
-            $data = Todo::whereDate('time_limit','>',$time_limit_start);
+            return $query->whereDate('time_limit','>',$time_limit_start);
         }
         return $query;
     }

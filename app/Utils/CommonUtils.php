@@ -1,22 +1,23 @@
 <?php
 
 namespace App\Utils;
+use App\Todo;
 
 class CommonUtils
 {
     public static function convert_comp_cls_num_to_str($comp_cls){
         switch($comp_cls){
-            case config('constant.not_yet') : return __('messages.not_yet');
-            case config('constant.comp') : return __('messages.comp');
+            case Todo::$not_yet : return __('messages.not_yet');
+            case Todo::$comp : return __('messages.comp');
         }
     }
 
     public static function convert_priority_cls_num_to_str($priority_cls){
         switch($priority_cls){
-            case config('constant.high') : return __('messages.high');
-            case config('constant.middle') : return __('messages.middle');
-            case config('constant.low') : return __('messages.low');
-            case config('constant.not_chosen') : return __('messages.not_chosen');
+            case Todo::$high : return __('messages.high');
+            case Todo::$middle : return __('messages.middle');
+            case Todo::$low : return __('messages.low');
+            case Todo::$not_chosen : return __('messages.not_chosen');
         }
     }
 
@@ -25,7 +26,7 @@ class CommonUtils
     }
 
     public static function get_comp_cls_from_array($search_arr){
-        return (empty($search_arr) or empty($search_arr['comp_cls'])) ? array(config('constant.not_yet')) : $search_arr['comp_cls'];
+        return (empty($search_arr) or empty($search_arr['comp_cls'])) ? array(Todo::$not_yet) : $search_arr['comp_cls'];
     }
 
     public static function get_timelimit_start_from_array($search_arr){
@@ -38,7 +39,7 @@ class CommonUtils
 
     public static function get_priority_cls_from_array($search_arr){
         return (empty($search_arr) or empty($search_arr['priority_cls'])) 
-        ? array(config('constant.high'),config('constant.middle'),config('constant.low'),config('constant.not_chosen'))
+        ? array(Todo::$high, Todo::$middle, Todo::$low, Todo::$not_chosen)
         : $search_arr['priority_cls'];
     }
 
@@ -51,15 +52,15 @@ class CommonUtils
     }
 
     public static function get_list_card_color($comp_cls,$priority_cls){
-        if ($comp_cls == config('constant.comp')) {
+        if ($comp_cls == Todo::$comp) {
             return 'btn-light';
         }
 
         switch($priority_cls){
-            case config('constant.high') : return 'btn-outline-danger';
-            case config('constant.middle') : return 'btn-outline-warning';
-            case config('constant.low') : return 'btn-outline-info';
-            case config('constant.not_chosen') : return 'btn-outline-dark';
+            case Todo::$high : return 'btn-outline-danger';
+            case Todo::$middle : return 'btn-outline-warning';
+            case Todo::$low : return 'btn-outline-info';
+            case Todo::$not_chosen : return 'btn-outline-dark';
         }
 
     }

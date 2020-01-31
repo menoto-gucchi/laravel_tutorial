@@ -15,11 +15,11 @@
                             <th>{{__('messages.comp_cls')}}</th>
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="not_yet" name="comp_cls[]" type="checkbox" value={{config('constant.not_yet')}} @if (in_array(config('constant.not_yet'),$req['comp_cls'])) checked @endif>
+                                    <input class="form-check-input" id="not_yet" name="comp_cls[]" type="checkbox" value={{App\Todo::$not_yet}} @if (in_array(App\Todo::$not_yet, $req['comp_cls'])) checked @endif>
                                     <label class="form-check-label" for="not_yet">{{__('messages.not_yet')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="comp" name="comp_cls[]" type="checkbox" value={{config('constant.comp')}} @if (in_array(config('constant.comp'),$req['comp_cls']))  checked @endif>
+                                    <input class="form-check-input" id="comp" name="comp_cls[]" type="checkbox" value={{App\Todo::$comp}} @if (in_array(App\Todo::$comp, $req['comp_cls']))  checked @endif>
                                     <label class="form-check-label" for="comp">{{__('messages.comp')}}</label>
                                 </div>
                             </td>
@@ -39,19 +39,19 @@
                             <th>{{__('messages.priority_cls')}}</th>
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="high" name="priority_cls[]" type="checkbox" value={{config('constant.high')}} @if (in_array(config('constant.high'),$req['priority_cls'])) checked @endif>
+                                    <input class="form-check-input" id="high" name="priority_cls[]" type="checkbox" value={{App\Todo::$high}} @if (in_array(App\Todo::$high, $req['priority_cls'])) checked @endif>
                                     <label class="form-check-label" for="high">{{__('messages.high')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="middle" name="priority_cls[]" type="checkbox" value={{config('constant.middle')}} @if (in_array(config('constant.middle'),$req['priority_cls'])) checked @endif>
+                                    <input class="form-check-input" id="middle" name="priority_cls[]" type="checkbox" value={{App\Todo::$middle}} @if (in_array(App\Todo::$middle, $req['priority_cls'])) checked @endif>
                                     <label class="form-check-label" for="middle">{{__('messages.middle')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="low" name="priority_cls[]" type="checkbox" value={{config('constant.low')}} @if (in_array(config('constant.low'),$req['priority_cls'])) checked @endif>
+                                    <input class="form-check-input" id="low" name="priority_cls[]" type="checkbox" value={{App\Todo::$low}} @if (in_array(App\Todo::$low, $req['priority_cls'])) checked @endif>
                                     <label class="form-check-label" for="low">{{__('messages.low')}}</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="not_chosen" name="priority_cls[]" type="checkbox" value={{config('constant.not_chosen')}} @if (in_array(config('constant.not_chosen'),$req['priority_cls'])) checked @endif>
+                                    <input class="form-check-input" id="not_chosen" name="priority_cls[]" type="checkbox" value={{App\Todo::$not_chosen}} @if (in_array(App\Todo::$not_chosen, $req['priority_cls'])) checked @endif>
                                     <label class="form-check-label" for="not_chosen">{{__('messages.not_chosen')}}</label>
                                 </div>
                             </td>
