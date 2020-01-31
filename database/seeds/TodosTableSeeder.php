@@ -12,7 +12,7 @@ class TodosTableSeeder extends Seeder
     public function run()
     {
         DB::insert(
-            'insert into users (
+            'insert into todos (
                 user_id,
                 title,
                 comp_cls,
