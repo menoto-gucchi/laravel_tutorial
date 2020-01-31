@@ -10,7 +10,7 @@
                         <tr>
                             <th>{{__('messages.title')}}</th>
                             <td>
-                                <input class="form-control @error('title') is-invalid @enderror" id="title" name="title" type="text" value="{{$req->title}}" requred>
+                                <input class="form-control @error('title') is-invalid @enderror" id="title" name="title" type="text" value="{{$todo['title']}}" requred>
                                 </input>
                                 @error('title')
                                     <div class="alert alert-danger">{{__('messages.title_error_msg')}}</div>
@@ -22,7 +22,7 @@
                             <td>
                                 <div class="form-check">
                                     <input class="form-check-input" id="not_yet" name="comp_cls" type="radio" value={{App\Todo::$not_yet}}
-                                    @if ($req->comp_cls == App\Todo::$not_yet)
+                                    @if ($todo['comp_cls'] == App\Todo::$not_yet)
                                         checked
                                     @endif
                                     >
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" id="comp" name="comp_cls" type="radio" value={{App\Todo::$comp}}
-                                    @if ($req->comp_cls == App\Todo::$comp)
+                                    @if ($todo['comp_cls'] == App\Todo::$comp)
                                         checked
                                     @endif
                                     >
@@ -41,7 +41,7 @@
                         <tr>
                             <th>{{__('messages.time_limit')}}</th>
                             <td>
-                                <input class="form-control" id="time_limit" name="time_limit" type="date" value={{$req->time_limit}}>
+                                <input class="form-control" id="time_limit" name="time_limit" type="date" value={{$todo['time_limit']}}>
                             </td>
                         </tr>
                         <tr>
@@ -49,7 +49,7 @@
                             <td>
                                 <div class="form-check">
                                     <input class="form-check-input" id="high" name="priority_cls" type="radio" value={{App\Todo::$high}}
-                                    @if ($req->priority_cls == App\Todo::$high)
+                                    @if ($todo['priority_cls'] == App\Todo::$high)
                                         checked
                                     @endif
                                     >
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" id="middle" name="priority_cls" type="radio" value={{App\Todo::$middle}}
-                                    @if ($req->priority_cls == App\Todo::$middle)
+                                    @if ($todo['priority_cls'] == App\Todo::$middle)
                                         checked
                                     @endif
                                     >
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" id="low" name="priority_cls" type="radio" value={{App\Todo::$low}}
-                                    @if ($req->priority_cls == App\Todo::$low)
+                                    @if ($todo['priority_cls'] == App\Todo::$low)
                                         checked
                                     @endif
                                     >
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" id="not_chosen" name="priority_cls" type="radio" value={{App\Todo::$not_chosen}}
-                                    @if ($req->priority_cls == App\Todo::$not_chosen)
+                                    @if ($todo['priority_cls'] == App\Todo::$not_chosen)
                                         checked
                                     @endif
                                     >
@@ -84,13 +84,13 @@
                         <tr>
                             <th>{{__('messages.description')}}</th>
                             <td>
-                                <textarea class="form-control" id="description" name="description" type="text">{{$req->description}}</textarea>
+                                <textarea class="form-control" id="description" name="description" type="text">{{$todo['description']}}</textarea>
                             </td>
                         </tr>
                     </table>
                 </div>
             </div>
-            <input id="id" name="id" type="hidden" value={{$req->id}}>
+            <input id="id" name="id" type="hidden" value={{$todo['id']}}>
         </form>
         <div class="row justify-content-center btn-row">
             <div class="col col-sm-3">
@@ -99,7 +99,7 @@
             <div class="col col-sm-3">
                 <form method="get" action="{{route('detail')}}">
                     @csrf
-                    <input id="id" name="id" type="hidden" value={{$req->id}}>
+                    <input id="id" name="id" type="hidden" value={{$todo['id']}}>
                     <input class="btn btn-secondary btn-block" type="submit" value={{__('messages.back_to_detail')}}>
                 </form>
             </div>

@@ -14,7 +14,14 @@ class UpdateTodoController extends Controller
 
     public function input(Request $req)
     {
-        return view('updateTodo.input', ['req' => $req]);
+        $data['id'] = $req->id;
+        $data['title'] = $req->title;
+        $data['comp_cls'] = $req->comp_cls;
+        $data['time_limit'] = $req->time_limit;
+        $data['priority_cls'] = $req->priority_cls;
+        $data['description'] = $req->description;
+
+        return view('updateTodo.input', ['todo' => $data]);
     }
 
     public function confirm(Request $req)
@@ -23,7 +30,14 @@ class UpdateTodoController extends Controller
             'title' => 'required|max:140',
         ]);
 
-        return view('updateTodo.confirm', ['req' => $req]);
+        $data['id'] = $req->id;
+        $data['title'] = $req->title;
+        $data['comp_cls'] = $req->comp_cls;
+        $data['time_limit'] = $req->time_limit;
+        $data['priority_cls'] = $req->priority_cls;
+        $data['description'] = $req->description;
+
+        return view('updateTodo.confirm', ['todo' => $data]);
     }
 
     public function complete(Request $req)

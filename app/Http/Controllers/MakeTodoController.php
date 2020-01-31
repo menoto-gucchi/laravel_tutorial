@@ -13,7 +13,7 @@ class MakeTodoController extends Controller
         $this->middleware('auth');
     }
 
-    public function input(Request $req)
+    public function input()
     {
         return view('makeTodo.input');
     }
@@ -24,7 +24,12 @@ class MakeTodoController extends Controller
             'title' => 'required|max:140',
         ]);
 
-        return view('makeTodo.confirm', ['req' => $req]);
+        $data['title'] = $req->title;
+        $data['time_limit'] = $req->time_limit;
+        $data['priority_cls'] = $req->priority_cls;
+        $data['description'] = $req->description;
+
+        return view('makeTodo.confirm', ['todo' => $data]);
     }
 
     public function complete(Request $req)

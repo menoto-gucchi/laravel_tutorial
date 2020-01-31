@@ -80,7 +80,6 @@ class ShowTodoController extends Controller
 
         //DB処理
         $data = new Todo();
-        $data = $data->where('user_id',Auth::id());
 
         $data = Todo::FindUserId()
             ->FindStr($array['str'])
@@ -114,8 +113,7 @@ class ShowTodoController extends Controller
         $data['priority_cls']=CommonUtils::get_priority_cls_from_array($search_arr);
         $data['sort_column']=CommonUtils::get_sort_column_from_array($search_arr);
         $data['asc_desc']=CommonUtils::get_asc_desc_from_array($search_arr);
-        $data = ['req' => $data];
 
-        return view('showTodo.search', $data);
+        return view('showTodo.search', ['condition' => $data]);
     }
 }
