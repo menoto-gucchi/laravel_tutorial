@@ -19,8 +19,8 @@ class Todo extends Model
     public static $middle = 2;
     public static $low = 3;
 
-    public function scopeFindUserId($query){
-        $query->where('user_id',Auth::id());
+    public function scopeFindUserId($query, $id){
+        $query->where('user_id', $id);
     }
 
     public function scopeFindStr($query, $str){

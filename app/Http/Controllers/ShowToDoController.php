@@ -25,7 +25,7 @@ class ShowTodoController extends Controller
         //DB処理
         $data = new Todo();
 
-        $data = Todo::FindUserId()
+        $data = Todo::FindUserId(Auth::id())
             ->FindStr($array['str'])
             ->FindCompCls($array['comp_cls'])
             ->FindTimeLimitStart($array['time_limit_start'])
