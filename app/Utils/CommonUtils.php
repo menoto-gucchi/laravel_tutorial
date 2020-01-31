@@ -6,17 +6,17 @@ class CommonUtils
 {
     public static function convert_comp_cls_num_to_str($comp_cls){
         switch($comp_cls){
-            case config('constant.not_yet') : return __('messages.not_yet');break;
-            case config('constant.comp') : return __('messages.comp');break;
+            case config('constant.not_yet') : return __('messages.not_yet');
+            case config('constant.comp') : return __('messages.comp');
         }
     }
 
     public static function convert_priority_cls_num_to_str($priority_cls){
         switch($priority_cls){
-            case config('constant.high') : return __('messages.high');break;
-            case config('constant.middle') : return __('messages.middle');break;
-            case config('constant.low') : return __('messages.low');break;
-            case config('constant.not_chosen') : return __('messages.not_chosen');break;
+            case config('constant.high') : return __('messages.high');
+            case config('constant.middle') : return __('messages.middle');
+            case config('constant.low') : return __('messages.low');
+            case config('constant.not_chosen') : return __('messages.not_chosen');
         }
     }
 
@@ -56,10 +56,10 @@ class CommonUtils
         }
 
         switch($priority_cls){
-            case config('constant.high') : return 'btn-outline-danger';break;
-            case config('constant.middle') : return 'btn-outline-warning';break;
-            case config('constant.low') : return 'btn-outline-info';break;
-            case config('constant.not_chosen') : return 'btn-outline-dark';break;
+            case config('constant.high') : return 'btn-outline-danger';
+            case config('constant.middle') : return 'btn-outline-warning';
+            case config('constant.low') : return 'btn-outline-info';
+            case config('constant.not_chosen') : return 'btn-outline-dark';
         }
 
     }
