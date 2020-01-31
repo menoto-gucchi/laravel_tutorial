@@ -15,7 +15,7 @@ class MakeTodoController extends Controller
 
     public function input(Request $req)
     {
-        return view('makeTodo.input', ['req' => $req]);
+        return view('makeTodo.input');
     }
 
     public function confirm(Request $req)
@@ -41,6 +41,6 @@ class MakeTodoController extends Controller
 
         $todos ->save(); 
 
-        return view('common.complete', ['msg' => __('messages.make_complete_msg')]);
+        return view('makeTodo.complete');
     }
 }

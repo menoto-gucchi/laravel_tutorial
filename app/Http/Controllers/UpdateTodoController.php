@@ -32,6 +32,6 @@ class UpdateTodoController extends Controller
 
         $data->fill($req->except('_token','_method','user_id'))->save();
 
-        return view('common.complete', ['msg' => __('messages.update_complete_msg')]);
+        return view('updateTodo.complete');
     }
 }

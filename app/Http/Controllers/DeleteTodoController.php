@@ -14,7 +14,7 @@ class DeleteTodoController extends Controller
 
     public function confirm(Request $req)
     {
-        return view('deleteTodo.confirm', ['req' => $req]);
+        return view('deleteTodo.confirm', ['id' => $req->id]);
     }
 
     public function complete(Request $req)
@@ -23,6 +23,6 @@ class DeleteTodoController extends Controller
 
         $data->delete();
 
-        return view('common.complete', ['msg' => __('messages.delete_complete_msg')]);
+        return view('deleteTodo.complete');
     }
 }
