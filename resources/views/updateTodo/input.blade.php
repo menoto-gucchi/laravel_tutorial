@@ -2,7 +2,7 @@
 @section('content')
 <div class="flex-center position-ref full-height">
     <div class="container">
-        <form id="update-confirm-form" method="get" action="/updateTodo/confirm">
+        <form id="update-confirm-form" method="get" action="{{route('updateConfirm')}}">
             @csrf
             <div class="row">
                 <div class="col">
@@ -97,7 +97,7 @@
                 <button class="btn btn-primary btn-block" type="submit" form="update-confirm-form">{{__('messages.confirm')}}</button>
             </div>
             <div class="col col-sm-3">
-                <form method="get" action="/showTodo/detail">
+                <form method="get" action="{{route('detail')}}">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$req->id}}>
                     <input class="btn btn-secondary btn-block" type="submit" value={{__('messages.back_to_detail')}}>

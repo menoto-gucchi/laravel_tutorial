@@ -2,7 +2,7 @@
 @section('content')
 <div class="flex-center position-ref full-height">
     <div class="container">
-        <form id="make-confirm-form" method="get" action="/makeTodo/confirm">
+        <form id="make-confirm-form" method="get" action="{{route('makeConfirm')}}">
             @csrf
             <div class="row">
                 <div class="col">

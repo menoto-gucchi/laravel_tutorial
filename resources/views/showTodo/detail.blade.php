@@ -33,7 +33,7 @@
         </div>
         <div class="row justify-content-center btn-row">
             <div class="col col-sm-3">
-                <form method="get" action="/updateTodo/input">
+                <form method="get" action="{{route('updateInput')}}">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$todo->id}}>
                     <input id="title" name="title" type="hidden" value={{$todo->title}}>
@@ -45,7 +45,7 @@
                 </form>
             </div>
             <div class="col col-sm-3">
-                <form method="get" action="/deleteTodo/confirm">
+                <form method="get" action="{{route('deleteConfirm')}}">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$todo->id}}>
                     <input class="btn btn-danger btn-block" type="submit" value={{__('messages.delete')}}>

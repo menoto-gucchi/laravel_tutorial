@@ -32,7 +32,7 @@
         </div>
         <div class="row justify-content-center btn-row">
             <div class="col col-sm-3">
-                <form method="get" action="/updateTodo/complete">
+                <form method="get" action="{{route('updateComplete')}}">
                     @csrf
                     <input id="id" name="id" type="hidden" value={{$req->id}}>
                     <input id="title" name="title" type="hidden" value={{$req->title}}>

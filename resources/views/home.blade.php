@@ -54,7 +54,7 @@
 
     </div>
     <div class="row justify-content-center btn-row">
-        <form method="get" action="/showTodo/list">
+        <form method="get" action="{{route('list')}}">
             @csrf
             <input class="btn btn-primary" type="submit" value={{__('messages.to_list')}}>
         </form>

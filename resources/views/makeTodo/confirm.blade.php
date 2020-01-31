@@ -28,7 +28,7 @@
         </div>
         <div class="row justify-content-center btn-row">
             <div class="col col-sm-3">
-                <form method="get" action="/makeTodo/complete">
+                <form method="get" action="{{route('makeComplete')}}">
                     @csrf
                     <input id="title" name="title" type="hidden" value={{$req->title}}>
                     <input id="time_limit" name="time_limit" type="hidden" value={{$req->time_limit}}>

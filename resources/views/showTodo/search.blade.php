@@ -2,7 +2,7 @@
 @section('content')
 <div class="flex-center position-ref full-height">
     <div class="container">
-        <form id="search-form" method="get" action="/showTodo/list">
+        <form id="search-form" method="get" action="{{route('list')}}">
             @csrf
             <div class="row">
                 <div class="col">
