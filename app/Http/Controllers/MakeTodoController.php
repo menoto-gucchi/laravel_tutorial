@@ -32,14 +32,14 @@ class MakeTodoController extends Controller
         //モデルオブジェクトをインスタント化
         $todos = new Todo();
 
-        $todos -> user_id = Auth::id();
-        $todos -> title = $req -> title;
-        $todos -> comp_cls = '0';
-        $todos -> time_limit = $req -> time_limit;
-        $todos -> priority_cls = $req -> priority_cls;
-        $todos -> description = $req -> description;
+        $todos->user_id = Auth::id();
+        $todos->title = $req->title;
+        $todos->comp_cls = '0';
+        $todos->time_limit = $req->time_limit;
+        $todos->priority_cls = $req->priority_cls;
+        $todos->description = $req->description;
 
-        $todos ->save(); 
+        $todos->save(); 
 
         return view('makeTodo.complete');
     }

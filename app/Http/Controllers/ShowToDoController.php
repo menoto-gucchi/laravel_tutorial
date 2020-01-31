@@ -16,7 +16,7 @@ class ShowTodoController extends Controller
 
     public function list(Request $req){
 
-        $validatedData = $req -> validate([
+        $validatedData = $req->validate([
             'time_limit_end' => 'nullable|date|after:time_limit_start',
         ]);
 
@@ -80,36 +80,36 @@ class ShowTodoController extends Controller
 
         //DB処理
         $data = new Todo();
-        $data = $data -> where('user_id',Auth::id());
+        $data = $data->where('user_id',Auth::id());
 
         if (!empty($array['str'])) {
-            $data = $data -> whereRaw("(title like '%".$array['str']."%' OR description like '%".$array['str']."%')");
+            $data = $data->whereRaw("(title like '%".$array['str']."%' OR description like '%".$array['str']."%')");
         }
 
         if (!empty($array['comp_cls'])) {
-            $data = $data -> whereIn('comp_cls',$array['comp_cls']);
+            $data = $data->whereIn('comp_cls',$array['comp_cls']);
         }
 
         if (!empty($array['time_limit_start'])) {
-            $data = $data -> whereDate('time_limit','>',$array['time_limit_start']);
+            $data = $data->whereDate('time_limit','>',$array['time_limit_start']);
         }
 
         if (!empty($array['time_limit_end'])) {
-            $data = $data -> whereDate('time_limit','<',$array['time_limit_end']);
+            $data = $data->whereDate('time_limit','<',$array['time_limit_end']);
         }
 
         if (!empty($array['priority_cls'])) {
-            $data = $data -> whereIn('priority_cls',$array['priority_cls']);
+            $data = $data->whereIn('priority_cls',$array['priority_cls']);
         }
 
         if (!(empty($array['sort_column']) or empty($array['asc_desc']))) {
-            $data = $data -> orderBy($array['sort_column'],$array['asc_desc']);
+            $data = $data->orderBy($array['sort_column'],$array['asc_desc']);
         }
         else {
-            $data = $data -> orderBy("time_limit","asc");
+            $data = $data->orderBy("time_limit","asc");
         }
 
-        $data = ['todoList' => $data ->get()];
+        $data = ['todoList' => $data->get()];
 
         return view('showTodo.list',$data);
     }
