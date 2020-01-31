@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Auth;
+use CommonUtils;
 
 class Todo extends Model
 {
@@ -25,7 +26,12 @@ class Todo extends Model
 
     public function scopeFindStr($query, $str){
         if (!empty($str)) {
-            return $query->whereRaw("(title like '%".$str."%' OR description like '%".$str."%')");
+            $str = CommonUtils::get_where_like_escaped_str($str);
+            return $query->where(
+                function($query) use($str){
+                    $query->where('title', 'like', '%'.$str.'%')
+                    ->orWhere('description', 'like', '%'.$str.'%');
+                });
         }
         return $query;
     }

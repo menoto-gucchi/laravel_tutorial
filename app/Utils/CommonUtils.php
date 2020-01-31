@@ -64,4 +64,10 @@ class CommonUtils
         }
 
     }
+
+    public static function get_where_like_escaped_str ($str){
+        $str = str_replace('%','\%',$str);
+        $str = str_replace('_','\_',$str);
+        return $str;
+    }
 }
