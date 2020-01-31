@@ -30,21 +30,21 @@
                     @else
                         <table class="table">
                             <tr>
-                                <th><nobr>{{__('messages.title')}}</nobr></th><td>{{$todo[0]->title}}</td>
+                                <th><nobr>{{__('messages.title')}}</nobr></th><td>{{$todo->title}}</td>
                             </tr>
                             <tr>
                                 <th>{{__('messages.comp_cls')}}</th>
-                                <td>{{CommonUtils::convert_comp_cls_num_to_str($todo[0]->comp_cls)}}</td>
+                                <td>{{CommonUtils::convert_comp_cls_num_to_str($todo->comp_cls)}}</td>
                             </tr>
                             <tr>
-                                <th>{{__('messages.time_limit')}}</th><td>{{$todo[0]->time_limit}}</td>
+                                <th>{{__('messages.time_limit')}}</th><td>{{$todo->time_limit}}</td>
                             </tr>
                             <tr>
                                 <th>{{__('messages.priority_cls')}}</th>
-                                <td>{{CommonUtils::convert_priority_cls_num_to_str($todo[0]->priority_cls)}}</td>
+                                <td>{{CommonUtils::convert_priority_cls_num_to_str($todo->priority_cls)}}</td>
                             </tr>
                             <tr>
-                                <th>{{__('messages.description')}}</th><td>{{$todo[0]->description}}</td>
+                                <th>{{__('messages.description')}}</th><td>{{$todo->description}}</td>
                             </tr>
                         </table>
                     @endif

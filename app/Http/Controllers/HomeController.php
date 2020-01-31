@@ -25,13 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = [
-            'todo' => Todo::where('user_id',Auth::id())
+        $data = Todo::where('user_id',Auth::id())
             ->orderBy('created_at','desc')
-            ->limit(1)
-            ->get()
-        ];
+            ->first();
 
-        return view('home',$data);
+        return view('home', ['todo' => $data]);
     }
 }
